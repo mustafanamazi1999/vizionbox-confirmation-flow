@@ -39,17 +39,20 @@ function CTAButton({
   children,
   className = "",
   full = false,
+  size = "lg",
 }: {
   children: React.ReactNode;
   className?: string;
   full?: boolean;
+  size?: "sm" | "lg";
 }) {
+  const sizing = size === "sm" ? "px-5 py-2.5 text-sm" : "px-8 py-5 text-base";
   return (
     <a
       href={CTA_URL}
       target="_blank"
       rel="noopener noreferrer"
-      className={`cta-btn group inline-flex ${full ? "w-full" : ""} items-center justify-center gap-2 rounded-full bg-[#E16A3D] px-8 py-5 text-base font-semibold text-white transition-all duration-300 hover:scale-[1.03] hover:brightness-110 active:scale-[0.98] ${className}`}
+      className={`cta-btn group inline-flex ${full ? "w-full" : ""} items-center justify-center gap-2 rounded-full bg-[#E16A3D] font-semibold text-white transition-all duration-300 hover:scale-[1.03] hover:brightness-110 active:scale-[0.98] ${sizing} ${className}`}
       style={{
         boxShadow:
           "0 10px 28px -8px #E16A3D, inset 0 1px 0 rgba(255,255,255,0.25)",
@@ -116,7 +119,7 @@ function Header() {
         borderColor: "rgba(255,255,255,0.05)",
       }}
     >
-      <div className="mx-auto flex max-w-[1280px] items-center px-5 py-3 sm:px-8">
+      <div className="mx-auto flex max-w-[1280px] items-center justify-between px-5 py-3 sm:px-8">
         <a
           href="https://thevizionbox.com"
           target="_blank"
@@ -127,9 +130,15 @@ function Header() {
           <img
             src={logoAsset.url}
             alt="VizionBox"
-            style={{ height: "168px", width: "auto", objectFit: "contain" }}
+            style={{ height: "112px", width: "auto", objectFit: "contain" }}
           />
         </a>
+        <CTAButton size="sm" className="hidden sm:inline-flex">
+          Complete Pre-Call Form
+        </CTAButton>
+        <CTAButton size="sm" className="sm:hidden">
+          Pre-Call Form
+        </CTAButton>
       </div>
     </header>
   );
@@ -138,11 +147,6 @@ function Header() {
 /* --------------------------------- Hero ---------------------------------- */
 
 function Hero() {
-  const pills = [
-    "Personalized to your market and niche",
-    "No pitch. No pressure.",
-    "Specific findings about your business",
-  ];
   return (
     <section className="relative overflow-hidden">
       <div className="grid-bg absolute inset-0" />
@@ -153,9 +157,9 @@ function Hero() {
             "radial-gradient(ellipse at top, rgba(0,111,124,0.35), transparent 60%)",
         }}
       />
-      <div className="orb left-1/2 top-32 h-[360px] w-[360px] -translate-x-1/2" />
+      <div className="orb left-1/2 top-10 h-[360px] w-[360px] -translate-x-1/2" />
 
-      <div className="relative mx-auto max-w-[1280px] px-5 py-28 sm:px-8 sm:py-40">
+      <div className="relative mx-auto max-w-[1280px] px-5 pt-10 pb-20 sm:px-8 sm:pt-14 sm:pb-28">
         <div className="mx-auto max-w-3xl text-center">
           <Reveal>
             <Eyebrow>Your Audit is Confirmed</Eyebrow>
@@ -175,16 +179,8 @@ function Hero() {
             </p>
           </Reveal>
           <Reveal delay={0.25}>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              {pills.map((p) => (
-                <span
-                  key={p}
-                  className="inline-flex items-center gap-2 rounded-full border border-[#006F7C]/60 bg-[#032435]/60 px-4 py-2 text-sm text-white"
-                >
-                  <Check className="h-3.5 w-3.5 text-[#006F7C]" />
-                  {p}
-                </span>
-              ))}
+            <div className="mt-10 flex justify-center">
+              <CTAButton>Complete Your Pre-Call Form</CTAButton>
             </div>
           </Reveal>
         </div>
@@ -197,9 +193,19 @@ function Hero() {
 
 function FOMO() {
   const ads = [
-    "Austin's #1 Plumber. Available 24/7. Call Now.",
-    "Emergency Plumbing Repair — Free Estimates. Licensed & Insured.",
-    "Top Rated Plumber Near You. Same-Day Service. Book Online.",
+    {
+      headline: "Austin's #1 Plumber. Available 24/7. Call Now.",
+      url: "www.rotorooter.com",
+    },
+    {
+      headline:
+        "Emergency Plumbing Repair — Free Estimates. Licensed & Insured.",
+      url: "www.mrrooter.com",
+    },
+    {
+      headline: "Top Rated Plumber Near You. Same-Day Service. Book Online.",
+      url: "www.benjaminfranklinplumbing.com",
+    },
   ];
   return (
     <section
@@ -243,16 +249,14 @@ function FOMO() {
             </div>
             <div className="space-y-5 p-5 sm:p-7">
               {ads.map((ad) => (
-                <div key={ad}>
+                <div key={ad.url}>
                   <span className="mb-1 inline-block rounded bg-[#E16A3D]/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#E16A3D]">
                     Sponsored
                   </span>
                   <h3 className="font-display text-lg text-white sm:text-xl">
-                    {ad}
+                    {ad.headline}
                   </h3>
-                  <p className="text-sm text-[#8BAFC0]">
-                    www.competitor-plumbing.com
-                  </p>
+                  <p className="text-sm text-[#8BAFC0]">{ad.url}</p>
                 </div>
               ))}
               <div className="space-y-4 border-t border-[#0A3A52] pt-5 opacity-30 blur-[2px]">
@@ -681,7 +685,7 @@ function Testimonials() {
       className="border-t"
       style={{ borderColor: "rgba(255,255,255,0.05)", backgroundColor: "#021820" }}
     >
-      <div className="mx-auto max-w-[1280px] px-5 py-24 sm:px-8 sm:py-32">
+      <div className="mx-auto max-w-[1280px] px-5 pt-24 pb-16 sm:px-8 sm:pt-32 sm:pb-20">
         <div className="mx-auto max-w-3xl text-center">
           <Reveal><Eyebrow>Testimonials</Eyebrow></Reveal>
           <Reveal delay={0.05}>
@@ -738,7 +742,7 @@ function Guarantee() {
       <div className="orb -left-32 top-32 h-[360px] w-[360px]" />
       <div className="orb -right-32 bottom-32 h-[400px] w-[400px]" style={{ animationDelay: "-4s" }} />
 
-      <div className="relative mx-auto max-w-[1280px] px-5 py-24 sm:px-8 sm:py-32">
+      <div className="relative mx-auto max-w-[1280px] px-5 pt-16 pb-24 sm:px-8 sm:pt-20 sm:pb-32">
         <div className="mx-auto max-w-3xl text-center">
           <Reveal><Eyebrow>The Guarantee</Eyebrow></Reveal>
           <Reveal delay={0.05}>
@@ -871,11 +875,6 @@ function Scarcity() {
 /* -------------------------------- Final CTA ------------------------------ */
 
 function FinalCTA() {
-  const pills = [
-    "Your answers are kept completely confidential",
-    "No obligation or commitment required",
-    "We review every form before the call",
-  ];
   return (
     <section className="relative overflow-hidden border-t" style={{ borderColor: "rgba(255,255,255,0.05)" }}>
       <div className="grid-bg absolute inset-0" />
@@ -915,19 +914,6 @@ function FinalCTA() {
               prepare specific findings for your business before the call.
             </p>
           </Reveal>
-          <Reveal delay={0.35}>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              {pills.map((p) => (
-                <span
-                  key={p}
-                  className="inline-flex items-center gap-2 rounded-full border border-[#006F7C]/60 bg-[#032435]/60 px-4 py-2 text-sm text-white"
-                >
-                  <Check className="h-3.5 w-3.5 text-[#006F7C]" />
-                  {p}
-                </span>
-              ))}
-            </div>
-          </Reveal>
         </div>
       </div>
     </section>
@@ -943,39 +929,49 @@ function Footer() {
       style={{ borderColor: "rgba(255,255,255,0.05)", backgroundColor: "#020C12" }}
     >
       <div className="mx-auto max-w-[1280px] px-5 py-12 sm:px-8">
-        <div className="grid gap-8 md:grid-cols-3 md:items-center">
+        <div className="flex flex-col items-start gap-4 text-left">
           <a
             href="https://thevizionbox.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-display text-2xl font-bold text-white"
+            className="inline-flex items-center"
+            aria-label="VizionBox home"
           >
-            VIZIONBOX
+            <img
+              src={logoAsset.url}
+              alt="VizionBox"
+              style={{ height: "112px", width: "auto", objectFit: "contain" }}
+            />
           </a>
-          <div className="text-sm text-[#8BAFC0] md:text-center">
+          <p className="text-sm text-[#8BAFC0]">
+            Google Ads Management for Home Service Businesses
+          </p>
+          <a
+            href="mailto:mustafa@thevizionbox.com"
+            className="text-sm text-[#8BAFC0] transition-colors hover:text-white"
+          >
+            mustafa@thevizionbox.com
+          </a>
+          <a
+            href="mailto:paniz@thevizionbox.com"
+            className="text-sm text-[#8BAFC0] transition-colors hover:text-white"
+          >
+            paniz@thevizionbox.com
+          </a>
+          <a
+            href="https://thevizionbox.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-[#8BAFC0] transition-colors hover:text-white"
+          >
             thevizionbox.com
-          </div>
-          <div className="space-y-1 text-sm md:text-right">
-            <a
-              href="mailto:mustafa@thevizionbox.com"
-              className="block text-[#8BAFC0] transition-colors hover:text-white"
-            >
-              mustafa@thevizionbox.com
-            </a>
-            <a
-              href="mailto:paniz@thevizionbox.com"
-              className="block text-[#8BAFC0] transition-colors hover:text-white"
-            >
-              paniz@thevizionbox.com
-            </a>
-          </div>
+          </a>
         </div>
         <div
-          className="mt-10 border-t pt-6 text-center text-xs text-[#8BAFC0]"
+          className="mt-8 border-t pt-6 text-left text-xs text-[#8BAFC0]"
           style={{ borderColor: "rgba(255,255,255,0.05)" }}
         >
-          <p>Google Ads Management for Home Service Businesses</p>
-          <p className="mt-1">© 2026 VizionBox. All rights reserved.</p>
+          <p>© 2026 VizionBox. All rights reserved.</p>
         </div>
       </div>
     </footer>
@@ -993,8 +989,6 @@ function ConfirmationPage() {
         <FOMO />
         <WhatHappens />
         <ProofBar />
-        <Results />
-        <System />
         <Testimonials />
         <Guarantee />
         <Scarcity />
