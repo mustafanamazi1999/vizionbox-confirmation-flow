@@ -119,7 +119,7 @@ function Header() {
         borderColor: "rgba(255,255,255,0.05)",
       }}
     >
-      <div className="mx-auto flex max-w-[1280px] items-center px-5 py-3 sm:px-8">
+      <div className="mx-auto flex max-w-[1280px] items-center justify-between px-5 py-3 sm:px-8">
         <a
           href="https://thevizionbox.com"
           target="_blank"
@@ -130,9 +130,15 @@ function Header() {
           <img
             src={logoAsset.url}
             alt="VizionBox"
-            style={{ height: "168px", width: "auto", objectFit: "contain" }}
+            style={{ height: "112px", width: "auto", objectFit: "contain" }}
           />
         </a>
+        <CTAButton size="sm" className="hidden sm:inline-flex">
+          Complete Pre-Call Form
+        </CTAButton>
+        <CTAButton size="sm" className="sm:hidden">
+          Pre-Call Form
+        </CTAButton>
       </div>
     </header>
   );
@@ -141,11 +147,6 @@ function Header() {
 /* --------------------------------- Hero ---------------------------------- */
 
 function Hero() {
-  const pills = [
-    "Personalized to your market and niche",
-    "No pitch. No pressure.",
-    "Specific findings about your business",
-  ];
   return (
     <section className="relative overflow-hidden">
       <div className="grid-bg absolute inset-0" />
@@ -156,9 +157,9 @@ function Hero() {
             "radial-gradient(ellipse at top, rgba(0,111,124,0.35), transparent 60%)",
         }}
       />
-      <div className="orb left-1/2 top-32 h-[360px] w-[360px] -translate-x-1/2" />
+      <div className="orb left-1/2 top-10 h-[360px] w-[360px] -translate-x-1/2" />
 
-      <div className="relative mx-auto max-w-[1280px] px-5 py-28 sm:px-8 sm:py-40">
+      <div className="relative mx-auto max-w-[1280px] px-5 pt-10 pb-20 sm:px-8 sm:pt-14 sm:pb-28">
         <div className="mx-auto max-w-3xl text-center">
           <Reveal>
             <Eyebrow>Your Audit is Confirmed</Eyebrow>
@@ -178,16 +179,8 @@ function Hero() {
             </p>
           </Reveal>
           <Reveal delay={0.25}>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              {pills.map((p) => (
-                <span
-                  key={p}
-                  className="inline-flex items-center gap-2 rounded-full border border-[#006F7C]/60 bg-[#032435]/60 px-4 py-2 text-sm text-white"
-                >
-                  <Check className="h-3.5 w-3.5 text-[#006F7C]" />
-                  {p}
-                </span>
-              ))}
+            <div className="mt-10 flex justify-center">
+              <CTAButton>Complete Your Pre-Call Form</CTAButton>
             </div>
           </Reveal>
         </div>
