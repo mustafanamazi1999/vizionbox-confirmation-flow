@@ -875,11 +875,6 @@ function Scarcity() {
 /* -------------------------------- Final CTA ------------------------------ */
 
 function FinalCTA() {
-  const pills = [
-    "Your answers are kept completely confidential",
-    "No obligation or commitment required",
-    "We review every form before the call",
-  ];
   return (
     <section className="relative overflow-hidden border-t" style={{ borderColor: "rgba(255,255,255,0.05)" }}>
       <div className="grid-bg absolute inset-0" />
@@ -918,19 +913,6 @@ function FinalCTA() {
               Takes less than 3 minutes. Kept completely confidential. Helps us
               prepare specific findings for your business before the call.
             </p>
-          </Reveal>
-          <Reveal delay={0.35}>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              {pills.map((p) => (
-                <span
-                  key={p}
-                  className="inline-flex items-center gap-2 rounded-full border border-[#006F7C]/60 bg-[#032435]/60 px-4 py-2 text-sm text-white"
-                >
-                  <Check className="h-3.5 w-3.5 text-[#006F7C]" />
-                  {p}
-                </span>
-              ))}
-            </div>
           </Reveal>
         </div>
       </div>
