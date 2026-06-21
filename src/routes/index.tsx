@@ -249,16 +249,14 @@ function FOMO() {
             </div>
             <div className="space-y-5 p-5 sm:p-7">
               {ads.map((ad) => (
-                <div key={ad}>
+                <div key={ad.url}>
                   <span className="mb-1 inline-block rounded bg-[#E16A3D]/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#E16A3D]">
                     Sponsored
                   </span>
                   <h3 className="font-display text-lg text-white sm:text-xl">
-                    {ad}
+                    {ad.headline}
                   </h3>
-                  <p className="text-sm text-[#8BAFC0]">
-                    www.competitor-plumbing.com
-                  </p>
+                  <p className="text-sm text-[#8BAFC0]">{ad.url}</p>
                 </div>
               ))}
               <div className="space-y-4 border-t border-[#0A3A52] pt-5 opacity-30 blur-[2px]">
