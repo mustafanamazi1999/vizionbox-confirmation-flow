@@ -742,7 +742,7 @@ function Guarantee() {
       <div className="orb -left-32 top-32 h-[360px] w-[360px]" />
       <div className="orb -right-32 bottom-32 h-[400px] w-[400px]" style={{ animationDelay: "-4s" }} />
 
-      <div className="relative mx-auto max-w-[1280px] px-5 py-24 sm:px-8 sm:py-32">
+      <div className="relative mx-auto max-w-[1280px] px-5 pt-16 pb-24 sm:px-8 sm:pt-20 sm:pb-32">
         <div className="mx-auto max-w-3xl text-center">
           <Reveal><Eyebrow>The Guarantee</Eyebrow></Reveal>
           <Reveal delay={0.05}>
