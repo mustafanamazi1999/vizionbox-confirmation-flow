@@ -193,9 +193,19 @@ function Hero() {
 
 function FOMO() {
   const ads = [
-    "Austin's #1 Plumber. Available 24/7. Call Now.",
-    "Emergency Plumbing Repair — Free Estimates. Licensed & Insured.",
-    "Top Rated Plumber Near You. Same-Day Service. Book Online.",
+    {
+      headline: "Austin's #1 Plumber. Available 24/7. Call Now.",
+      url: "www.rotorooter.com",
+    },
+    {
+      headline:
+        "Emergency Plumbing Repair — Free Estimates. Licensed & Insured.",
+      url: "www.mrrooter.com",
+    },
+    {
+      headline: "Top Rated Plumber Near You. Same-Day Service. Book Online.",
+      url: "www.benjaminfranklinplumbing.com",
+    },
   ];
   return (
     <section
