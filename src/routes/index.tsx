@@ -685,7 +685,7 @@ function Testimonials() {
       className="border-t"
       style={{ borderColor: "rgba(255,255,255,0.05)", backgroundColor: "#021820" }}
     >
-      <div className="mx-auto max-w-[1280px] px-5 py-24 sm:px-8 sm:py-32">
+      <div className="mx-auto max-w-[1280px] px-5 pt-24 pb-16 sm:px-8 sm:pt-32 sm:pb-20">
         <div className="mx-auto max-w-3xl text-center">
           <Reveal><Eyebrow>Testimonials</Eyebrow></Reveal>
           <Reveal delay={0.05}>
