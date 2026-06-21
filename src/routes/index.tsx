@@ -929,39 +929,49 @@ function Footer() {
       style={{ borderColor: "rgba(255,255,255,0.05)", backgroundColor: "#020C12" }}
     >
       <div className="mx-auto max-w-[1280px] px-5 py-12 sm:px-8">
-        <div className="grid gap-8 md:grid-cols-3 md:items-center">
+        <div className="flex flex-col items-start gap-4 text-left">
           <a
             href="https://thevizionbox.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-display text-2xl font-bold text-white"
+            className="inline-flex items-center"
+            aria-label="VizionBox home"
           >
-            VIZIONBOX
+            <img
+              src={logoAsset.url}
+              alt="VizionBox"
+              style={{ height: "112px", width: "auto", objectFit: "contain" }}
+            />
           </a>
-          <div className="text-sm text-[#8BAFC0] md:text-center">
+          <p className="text-sm text-[#8BAFC0]">
+            Google Ads Management for Home Service Businesses
+          </p>
+          <a
+            href="mailto:mustafa@thevizionbox.com"
+            className="text-sm text-[#8BAFC0] transition-colors hover:text-white"
+          >
+            mustafa@thevizionbox.com
+          </a>
+          <a
+            href="mailto:paniz@thevizionbox.com"
+            className="text-sm text-[#8BAFC0] transition-colors hover:text-white"
+          >
+            paniz@thevizionbox.com
+          </a>
+          <a
+            href="https://thevizionbox.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-[#8BAFC0] transition-colors hover:text-white"
+          >
             thevizionbox.com
-          </div>
-          <div className="space-y-1 text-sm md:text-right">
-            <a
-              href="mailto:mustafa@thevizionbox.com"
-              className="block text-[#8BAFC0] transition-colors hover:text-white"
-            >
-              mustafa@thevizionbox.com
-            </a>
-            <a
-              href="mailto:paniz@thevizionbox.com"
-              className="block text-[#8BAFC0] transition-colors hover:text-white"
-            >
-              paniz@thevizionbox.com
-            </a>
-          </div>
+          </a>
         </div>
         <div
-          className="mt-10 border-t pt-6 text-center text-xs text-[#8BAFC0]"
+          className="mt-8 border-t pt-6 text-left text-xs text-[#8BAFC0]"
           style={{ borderColor: "rgba(255,255,255,0.05)" }}
         >
-          <p>Google Ads Management for Home Service Businesses</p>
-          <p className="mt-1">© 2026 VizionBox. All rights reserved.</p>
+          <p>© 2026 VizionBox. All rights reserved.</p>
         </div>
       </div>
     </footer>
@@ -979,8 +989,6 @@ function ConfirmationPage() {
         <FOMO />
         <WhatHappens />
         <ProofBar />
-        <Results />
-        <System />
         <Testimonials />
         <Guarantee />
         <Scarcity />
