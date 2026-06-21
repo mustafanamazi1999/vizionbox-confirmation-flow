@@ -39,17 +39,20 @@ function CTAButton({
   children,
   className = "",
   full = false,
+  size = "lg",
 }: {
   children: React.ReactNode;
   className?: string;
   full?: boolean;
+  size?: "sm" | "lg";
 }) {
+  const sizing = size === "sm" ? "px-5 py-2.5 text-sm" : "px-8 py-5 text-base";
   return (
     <a
       href={CTA_URL}
       target="_blank"
       rel="noopener noreferrer"
-      className={`cta-btn group inline-flex ${full ? "w-full" : ""} items-center justify-center gap-2 rounded-full bg-[#E16A3D] px-8 py-5 text-base font-semibold text-white transition-all duration-300 hover:scale-[1.03] hover:brightness-110 active:scale-[0.98] ${className}`}
+      className={`cta-btn group inline-flex ${full ? "w-full" : ""} items-center justify-center gap-2 rounded-full bg-[#E16A3D] font-semibold text-white transition-all duration-300 hover:scale-[1.03] hover:brightness-110 active:scale-[0.98] ${sizing} ${className}`}
       style={{
         boxShadow:
           "0 10px 28px -8px #E16A3D, inset 0 1px 0 rgba(255,255,255,0.25)",
