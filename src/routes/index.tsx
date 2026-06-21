@@ -929,7 +929,7 @@ function Footer() {
       style={{ borderColor: "rgba(255,255,255,0.05)", backgroundColor: "#020C12" }}
     >
       <div className="mx-auto max-w-[1280px] px-5 py-12 sm:px-8">
-        <div className="flex flex-col items-start gap-4 text-left">
+        <div className="flex flex-col items-start gap-2 text-left">
           <a
             href="https://thevizionbox.com"
             target="_blank"
@@ -946,26 +946,28 @@ function Footer() {
           <p className="text-sm text-[#8BAFC0]">
             Google Ads Management for Home Service Businesses
           </p>
-          <a
-            href="mailto:mustafa@thevizionbox.com"
-            className="text-sm text-[#8BAFC0] transition-colors hover:text-white"
-          >
-            mustafa@thevizionbox.com
-          </a>
-          <a
-            href="mailto:paniz@thevizionbox.com"
-            className="text-sm text-[#8BAFC0] transition-colors hover:text-white"
-          >
-            paniz@thevizionbox.com
-          </a>
-          <a
-            href="https://thevizionbox.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-[#8BAFC0] transition-colors hover:text-white"
-          >
-            thevizionbox.com
-          </a>
+          <div className="flex flex-col gap-0">
+            <a
+              href="mailto:mustafa@thevizionbox.com"
+              className="text-sm text-[#8BAFC0] transition-colors hover:text-white"
+            >
+              mustafa@thevizionbox.com
+            </a>
+            <a
+              href="mailto:paniz@thevizionbox.com"
+              className="text-sm text-[#8BAFC0] transition-colors hover:text-white"
+            >
+              paniz@thevizionbox.com
+            </a>
+            <a
+              href="https://thevizionbox.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-[#8BAFC0] transition-colors hover:text-white"
+            >
+              thevizionbox.com
+            </a>
+          </div>
         </div>
         <div
           className="mt-8 border-t pt-6 text-left text-xs text-[#8BAFC0]"
