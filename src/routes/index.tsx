@@ -159,7 +159,7 @@ function Hero() {
       />
       <div className="orb left-1/2 top-10 h-[360px] w-[360px] -translate-x-1/2" />
 
-      <div className="relative mx-auto max-w-[1280px] px-5 pt-10 pb-20 sm:px-8 sm:pt-14 sm:pb-28">
+      <div className="relative mx-auto max-w-[1280px] px-5 pt-4 pb-12 sm:px-8 sm:pt-6 sm:pb-16">
         <div className="mx-auto max-w-3xl text-center">
           <Reveal>
             <Eyebrow>Your Audit is Confirmed</Eyebrow>
@@ -685,7 +685,7 @@ function Testimonials() {
       className="border-t"
       style={{ borderColor: "rgba(255,255,255,0.05)", backgroundColor: "#021820" }}
     >
-      <div className="mx-auto max-w-[1280px] px-5 pt-24 pb-16 sm:px-8 sm:pt-32 sm:pb-20">
+      <div className="mx-auto max-w-[1280px] px-5 pt-24 pb-0 sm:px-8 sm:pt-32 sm:pb-0">
         <div className="mx-auto max-w-3xl text-center">
           <Reveal><Eyebrow>Testimonials</Eyebrow></Reveal>
           <Reveal delay={0.05}>
@@ -742,7 +742,7 @@ function Guarantee() {
       <div className="orb -left-32 top-32 h-[360px] w-[360px]" />
       <div className="orb -right-32 bottom-32 h-[400px] w-[400px]" style={{ animationDelay: "-4s" }} />
 
-      <div className="relative mx-auto max-w-[1280px] px-5 pt-16 pb-24 sm:px-8 sm:pt-20 sm:pb-32">
+      <div className="relative mx-auto max-w-[1280px] px-5 pt-0 pb-24 sm:px-8 sm:pt-0 sm:pb-32">
         <div className="mx-auto max-w-3xl text-center">
           <Reveal><Eyebrow>The Guarantee</Eyebrow></Reveal>
           <Reveal delay={0.05}>
@@ -929,7 +929,7 @@ function Footer() {
       style={{ borderColor: "rgba(255,255,255,0.05)", backgroundColor: "#020C12" }}
     >
       <div className="mx-auto max-w-[1280px] px-5 py-12 sm:px-8">
-        <div className="flex flex-col items-start gap-4 text-left">
+        <div className="flex flex-col items-start gap-2 text-left">
           <a
             href="https://thevizionbox.com"
             target="_blank"
@@ -946,26 +946,28 @@ function Footer() {
           <p className="text-sm text-[#8BAFC0]">
             Google Ads Management for Home Service Businesses
           </p>
-          <a
-            href="mailto:mustafa@thevizionbox.com"
-            className="text-sm text-[#8BAFC0] transition-colors hover:text-white"
-          >
-            mustafa@thevizionbox.com
-          </a>
-          <a
-            href="mailto:paniz@thevizionbox.com"
-            className="text-sm text-[#8BAFC0] transition-colors hover:text-white"
-          >
-            paniz@thevizionbox.com
-          </a>
-          <a
-            href="https://thevizionbox.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-[#8BAFC0] transition-colors hover:text-white"
-          >
-            thevizionbox.com
-          </a>
+          <div className="flex flex-col gap-0">
+            <a
+              href="mailto:mustafa@thevizionbox.com"
+              className="text-sm text-[#8BAFC0] transition-colors hover:text-white"
+            >
+              mustafa@thevizionbox.com
+            </a>
+            <a
+              href="mailto:paniz@thevizionbox.com"
+              className="text-sm text-[#8BAFC0] transition-colors hover:text-white"
+            >
+              paniz@thevizionbox.com
+            </a>
+            <a
+              href="https://thevizionbox.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-[#8BAFC0] transition-colors hover:text-white"
+            >
+              thevizionbox.com
+            </a>
+          </div>
         </div>
         <div
           className="mt-8 border-t pt-6 text-left text-xs text-[#8BAFC0]"
