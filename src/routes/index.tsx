@@ -870,14 +870,10 @@ function Scarcity() {
         <div className="mx-auto max-w-3xl text-center">
           <Reveal>
             <span
-              className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold uppercase tracking-[0.18em] text-white"
-              style={{
-                background:
-                  "linear-gradient(135deg, #E16A3D 0%, #b8472a 100%)",
-                boxShadow: "0 0 30px -5px rgba(225,106,61,0.6)",
-              }}
+              className="inline-flex items-center gap-2.5 rounded-full border-2 border-destructive/60 bg-destructive/15 px-6 py-3 text-sm font-bold uppercase tracking-wider"
+              style={{ color: "#ef4444", boxShadow: "0 0 30px -5px rgba(220,38,38,0.5)" }}
             >
-              <Lock className="h-3.5 w-3.5" />
+              <span className="h-2 w-2 animate-pulse rounded-full" style={{ background: "#ef4444" }} />
               Limited Availability
             </span>
           </Reveal>
@@ -885,8 +881,9 @@ function Scarcity() {
             <SectionHeading className="mt-6">
               We Only Work With{" "}
               <span className="bg-gradient-to-br from-accent to-[#00B5C7] bg-clip-text text-transparent">
-                One Business Per Category Per City.
-              </span>
+                One Business
+              </span>{" "}
+              Per Category Per City.
             </SectionHeading>
           </Reveal>
           <Reveal delay={0.15}>
@@ -900,8 +897,11 @@ function Scarcity() {
         </div>
 
         <Reveal delay={0.2} className="mx-auto mt-10 max-w-3xl">
-          <div
-            className="rounded-2xl border bg-[#032435] p-8 text-center"
+          <motion.div
+            whileHover={{ y: -4, scale: 1.01 }}
+            whileTap={TAP}
+            transition={{ type: "spring", stiffness: 280, damping: 22 }}
+            className="group relative overflow-hidden rounded-2xl border transition-all duration-500 hover:border-brand/60 hover:shadow-[0_20px_60px_-10px_rgba(225,106,61,0.4)] active:border-brand/60 bg-[#032435] p-8 text-center"
             style={{ borderColor: "rgba(225,106,61,0.35)" }}
           >
             <p className="text-lg text-white">
@@ -912,7 +912,7 @@ function Scarcity() {
               But other businesses in your area are actively looking for
               exactly what you just booked.
             </p>
-          </div>
+          </motion.div>
         </Reveal>
       </div>
     </section>
