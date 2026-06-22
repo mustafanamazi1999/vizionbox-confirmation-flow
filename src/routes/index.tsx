@@ -160,8 +160,27 @@ function Header() {
 /* --------------------------------- Hero ---------------------------------- */
 
 function Hero() {
+  const HeroReveal = ({
+    children,
+    delay = 0,
+    className = "",
+  }: {
+    children: React.ReactNode;
+    delay?: number;
+    className?: string;
+  }) => (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "0px" }}
+      transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
   return (
-    <section className="relative overflow-hidden pt-0">
+    <section className="relative overflow-hidden">
       <div className="grid-bg absolute inset-0" />
       <div
         className="absolute inset-x-0 top-0 h-[600px]"
@@ -172,32 +191,32 @@ function Hero() {
       />
       <div className="orb left-1/2 top-10 h-[360px] w-[360px] -translate-x-1/2" />
 
-      <div className="relative mx-auto max-w-[1280px] px-5 pt-8 pb-12 sm:px-8 sm:pt-10 sm:pb-16">
+      <div className="relative mx-auto max-w-[1280px] px-5 pt-2 pb-12 sm:px-8 sm:pt-4 sm:pb-16">
         <div className="mx-auto max-w-3xl text-center">
-          <Reveal>
+          <HeroReveal>
             <Eyebrow>Your Audit is Confirmed</Eyebrow>
-          </Reveal>
-          <Reveal delay={0.05}>
+          </HeroReveal>
+          <HeroReveal delay={0.05}>
             <h1 className="text-balance text-5xl font-bold leading-[1.02] sm:text-6xl md:text-7xl lg:text-8xl">
               Your Google Ads Audit is{" "}
               <span className="bg-gradient-to-br from-accent to-[#00B5C7] bg-clip-text text-transparent">
                 Locked In.
               </span>
             </h1>
-          </Reveal>
-          <Reveal delay={0.15}>
+          </HeroReveal>
+          <HeroReveal delay={0.15}>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-[#8BAFC0] sm:text-xl">
               Before the call, take 90 seconds to read what's below. It will
               make our conversation significantly more valuable for you and
               your business. Everything here was prepared specifically for home
               service businesses in your market.
             </p>
-          </Reveal>
-          <Reveal delay={0.25}>
+          </HeroReveal>
+          <HeroReveal delay={0.25}>
             <div className="mt-10 flex justify-center">
               <CTAButton>Complete Your Pre-Call Form</CTAButton>
             </div>
-          </Reveal>
+          </HeroReveal>
         </div>
       </div>
       <div id="hero-sentinel" aria-hidden="true" />
