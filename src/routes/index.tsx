@@ -176,7 +176,6 @@ const HeroReveal = ({
       {children}
     </motion.div>
   );
-
   return (
     <section className="relative overflow-hidden">
       <div className="grid-bg absolute inset-0" />
