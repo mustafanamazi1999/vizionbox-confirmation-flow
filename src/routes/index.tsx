@@ -94,7 +94,11 @@ function Reveal({
 }
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
-  return <p className="eyebrow mb-4">{children}</p>;
+  return (
+    <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-brand">
+      {children}
+    </p>
+  );
 }
 
 function SectionHeading({
@@ -106,7 +110,7 @@ function SectionHeading({
 }) {
   return (
     <h2
-      className={`font-display text-4xl leading-[1.05] sm:text-5xl md:text-6xl ${className}`}
+      className={`text-balance text-4xl font-bold leading-[1.05] sm:text-5xl md:text-6xl ${className}`}
     >
       {children}
     </h2>
