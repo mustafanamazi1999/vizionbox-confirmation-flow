@@ -12,7 +12,6 @@ import {
   FileText,
   Wrench,
   Layout,
-  Lock,
 } from "lucide-react";
 import logoAsset from "@/assets/vizionbox-logo.png.asset.json";
 import { usePastHero } from "@/hooks/use-past-hero";
