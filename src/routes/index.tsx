@@ -15,6 +15,13 @@ import {
   Lock,
 } from "lucide-react";
 import logoAsset from "@/assets/vizionbox-logo.png.asset.json";
+import { usePastHero } from "@/hooks/use-past-hero";
+
+const TAP = { scale: 0.98 } as const;
+const CARD_HOVER = {
+  y: -4,
+  transition: { duration: 0.25, ease: [0.22, 1, 0.36, 1] as const },
+} as const;
 
 const CTA_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSdH_EWOxKK5Vc-un0vtAlMwyAHwSkqCu5_dHdAWIk25G_iO0g/viewform";
@@ -87,7 +94,11 @@ function Reveal({
 }
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
-  return <p className="eyebrow mb-4">{children}</p>;
+  return (
+    <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-brand">
+      {children}
+    </p>
+  );
 }
 
 function SectionHeading({
@@ -99,7 +110,7 @@ function SectionHeading({
 }) {
   return (
     <h2
-      className={`font-display text-4xl leading-[1.05] sm:text-5xl md:text-6xl ${className}`}
+      className={`text-balance text-4xl font-bold leading-[1.05] sm:text-5xl md:text-6xl ${className}`}
     >
       {children}
     </h2>
@@ -148,7 +159,7 @@ function Header() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden pt-0">
       <div className="grid-bg absolute inset-0" />
       <div
         className="absolute inset-x-0 top-0 h-[600px]"
@@ -159,15 +170,17 @@ function Hero() {
       />
       <div className="orb left-1/2 top-10 h-[360px] w-[360px] -translate-x-1/2" />
 
-      <div className="relative mx-auto max-w-[1280px] px-5 pt-4 pb-12 sm:px-8 sm:pt-6 sm:pb-16">
+      <div className="relative mx-auto max-w-[1280px] px-5 pt-8 pb-12 sm:px-8 sm:pt-10 sm:pb-16">
         <div className="mx-auto max-w-3xl text-center">
           <Reveal>
             <Eyebrow>Your Audit is Confirmed</Eyebrow>
           </Reveal>
           <Reveal delay={0.05}>
-            <h1 className="font-display text-5xl leading-[1.02] sm:text-6xl md:text-7xl lg:text-8xl">
+            <h1 className="text-balance text-5xl font-bold leading-[1.02] sm:text-6xl md:text-7xl lg:text-8xl">
               Your Google Ads Audit is{" "}
-              <span className="text-[#006F7C]">Locked In.</span>
+              <span className="bg-gradient-to-br from-accent to-[#00B5C7] bg-clip-text text-transparent">
+                Locked In.
+              </span>
             </h1>
           </Reveal>
           <Reveal delay={0.15}>
@@ -185,6 +198,7 @@ function Hero() {
           </Reveal>
         </div>
       </div>
+      <div id="hero-sentinel" aria-hidden="true" />
     </section>
   );
 }
@@ -253,7 +267,7 @@ function FOMO() {
                   <span className="mb-1 inline-block rounded bg-[#E16A3D]/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#E16A3D]">
                     Sponsored
                   </span>
-                  <h3 className="font-display text-lg text-white sm:text-xl">
+                  <h3 className="text-lg font-bold text-white sm:text-xl">
                     {ad.headline}
                   </h3>
                   <p className="text-sm text-[#8BAFC0]">{ad.url}</p>
@@ -334,20 +348,22 @@ function WhatHappens() {
         <div className="mt-14 grid gap-6 md:grid-cols-3">
           {cards.map((c, i) => (
             <Reveal key={c.n} delay={i * 0.08}>
-              <div
-                className="card-hover h-full rounded-2xl border bg-[#032435] p-8"
+              <motion.div
+                whileHover={CARD_HOVER}
+                whileTap={TAP}
+                className="h-full rounded-2xl border bg-[#032435] p-8 transition-shadow duration-300 hover:border-accent/40 hover:shadow-[0_20px_60px_-20px_rgba(0,111,124,0.5)]"
                 style={{ borderColor: "#0A3A52" }}
               >
-                <div className="font-display text-6xl text-[#006F7C]">
+                <div className="text-6xl font-bold text-accent">
                   {c.n}
                 </div>
-                <h3 className="mt-4 font-display text-2xl text-white">
+                <h3 className="mt-4 text-2xl font-bold text-white">
                   {c.t}
                 </h3>
                 <p className="mt-3 text-base leading-relaxed text-[#8BAFC0]">
                   {c.d}
                 </p>
-              </div>
+              </motion.div>
             </Reveal>
           ))}
         </div>
@@ -396,7 +412,7 @@ function ProofBar() {
       <div className="marquee-track flex w-max gap-10 py-5 whitespace-nowrap">
         {doubled.map((it, i) => (
           <div key={i} className="flex items-center gap-10">
-            <span className="font-display text-lg uppercase tracking-wide text-white sm:text-xl">
+            <span className="text-lg font-bold uppercase tracking-wide text-white sm:text-xl">
               {it}
             </span>
             <span className="text-white/70">★</span>
@@ -428,7 +444,7 @@ function AnimatedCPL({ from, to }: { from: number; to: number }) {
   return (
     <motion.span
       ref={ref}
-      className="font-display text-6xl font-bold text-[#E16A3D] sm:text-7xl"
+      className="text-6xl font-bold text-brand sm:text-7xl"
     >
       {rounded}
     </motion.span>
@@ -507,14 +523,16 @@ function Results() {
         <div className="mt-14 grid gap-6 md:grid-cols-2">
           {cards.map((c, i) => (
             <Reveal key={c.title} delay={i * 0.08}>
-              <div
-                className="card-hover h-full rounded-2xl border bg-[#032435] p-8"
+              <motion.div
+                whileHover={CARD_HOVER}
+                whileTap={TAP}
+                className="h-full rounded-2xl border bg-[#032435] p-8 transition-shadow duration-300 hover:border-accent/40 hover:shadow-[0_20px_60px_-20px_rgba(0,111,124,0.5)]"
                 style={{ borderColor: "#0A3A52" }}
               >
                 <div className="flex items-center justify-between gap-4">
                   <div className="min-w-0">
                     <div className="text-3xl">{c.emoji}</div>
-                    <h3 className="mt-2 font-display text-2xl text-white">
+                    <h3 className="mt-2 text-2xl font-bold text-white">
                       {c.title}
                     </h3>
                     <p className="text-sm text-[#8BAFC0]">{c.loc}</p>
@@ -543,10 +561,10 @@ function Results() {
                     {c.spend}
                   </span>
                 </div>
-                <p className="mt-5 border-l-2 border-[#006F7C] pl-4 text-base italic text-white">
+                <p className="mt-5 border-l-2 border-accent pl-4 text-base italic text-white">
                   "{c.quote}"
                 </p>
-              </div>
+              </motion.div>
             </Reveal>
           ))}
         </div>
@@ -560,8 +578,8 @@ function Results() {
                 "linear-gradient(135deg, #006F7C 0%, #021820 100%)",
             }}
           >
-            <h3 className="font-display text-3xl text-white sm:text-5xl">
-              <span className="text-[#E16A3D]">$34</span> Average Cost Per
+            <h3 className="text-3xl font-bold text-white sm:text-5xl">
+              <span className="text-brand">$34</span> Average Cost Per
               Lead Across All Active Campaigns
             </h3>
             <p className="mt-3 text-base text-white/80">
@@ -629,18 +647,20 @@ function System() {
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((it, i) => (
             <Reveal key={it.t} delay={i * 0.08}>
-              <div
-                className="card-hover h-full rounded-2xl border bg-[#032435] p-6"
+              <motion.div
+                whileHover={CARD_HOVER}
+                whileTap={TAP}
+                className="h-full rounded-2xl border bg-[#032435] p-6 transition-shadow duration-300 hover:border-accent/40 hover:shadow-[0_20px_60px_-20px_rgba(0,111,124,0.5)]"
                 style={{ borderColor: "#0A3A52" }}
               >
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-[#006F7C]/15 text-[#006F7C]">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-accent/15 text-accent">
                   <it.icon className="h-5 w-5" />
                 </div>
-                <h3 className="mt-4 font-display text-xl text-white">{it.t}</h3>
+                <h3 className="mt-4 text-xl font-bold text-white">{it.t}</h3>
                 <p className="mt-2 text-base leading-relaxed text-[#8BAFC0]">
                   {it.d}
                 </p>
-              </div>
+              </motion.div>
             </Reveal>
           ))}
         </div>
@@ -685,7 +705,7 @@ function Testimonials() {
       className="border-t"
       style={{ borderColor: "rgba(255,255,255,0.05)", backgroundColor: "#021820" }}
     >
-      <div className="mx-auto max-w-[1280px] px-5 pt-24 pb-0 sm:px-8 sm:pt-32 sm:pb-0">
+      <div className="mx-auto max-w-[1280px] px-5 py-24 sm:px-8 sm:py-32">
         <div className="mx-auto max-w-3xl text-center">
           <Reveal><Eyebrow>Testimonials</Eyebrow></Reveal>
           <Reveal delay={0.05}>
@@ -698,13 +718,15 @@ function Testimonials() {
         <div className="mt-14 grid gap-6 md:grid-cols-3">
           {ts.map((t, i) => (
             <Reveal key={t.name} delay={i * 0.08}>
-              <div
-                className="card-hover h-full rounded-2xl border bg-[#032435] p-8"
+              <motion.div
+                whileHover={CARD_HOVER}
+                whileTap={TAP}
+                className="h-full rounded-2xl border bg-[#032435] p-8 transition-shadow duration-300 hover:border-accent/40 hover:shadow-[0_20px_60px_-20px_rgba(0,111,124,0.5)]"
                 style={{ borderColor: "#0A3A52", borderLeft: "3px solid #006F7C" }}
               >
                 <div className="flex gap-1">
                   {[0, 1, 2, 3, 4].map((s) => (
-                    <Star key={s} className="h-4 w-4 fill-[#006F7C] text-[#006F7C]" />
+                    <Star key={s} className="h-4 w-4 fill-accent text-accent" />
                   ))}
                 </div>
                 <p className="mt-5 text-lg italic leading-relaxed text-white">
@@ -722,7 +744,7 @@ function Testimonials() {
                     <p className="text-sm text-[#8BAFC0]">{t.role}</p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </Reveal>
           ))}
         </div>
@@ -735,14 +757,8 @@ function Testimonials() {
 
 function Guarantee() {
   return (
-    <section
-      className="relative overflow-hidden border-t"
-      style={{ borderColor: "rgba(255,255,255,0.05)" }}
-    >
-      <div className="orb -left-32 top-32 h-[360px] w-[360px]" />
-      <div className="orb -right-32 bottom-32 h-[400px] w-[400px]" style={{ animationDelay: "-4s" }} />
-
-      <div className="relative mx-auto max-w-[1280px] px-5 pt-0 pb-24 sm:px-8 sm:pt-0 sm:pb-32">
+    <section className="relative overflow-hidden border-t border-white/5 py-24 sm:py-32">
+      <div className="relative mx-auto max-w-[1280px] px-5 sm:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <Reveal><Eyebrow>The Guarantee</Eyebrow></Reveal>
           <Reveal delay={0.05}>
@@ -752,25 +768,27 @@ function Guarantee() {
 
         <Reveal delay={0.15} className="mx-auto mt-12 max-w-4xl">
           <div
-            className="rounded-3xl border p-8 sm:p-12"
+            className="relative overflow-hidden rounded-3xl border p-8 sm:p-12"
             style={{
               borderColor: "#0A3A52",
               background:
                 "linear-gradient(135deg, #006F7C 0%, #021820 100%)",
             }}
           >
-            <div className="flex flex-col items-center text-center">
+            <div className="orb pointer-events-none absolute -left-32 -top-20 h-[360px] w-[360px]" />
+            <div className="orb pointer-events-none absolute -right-32 -bottom-20 h-[400px] w-[400px]" style={{ animationDelay: "-4s" }} />
+            <div className="relative flex flex-col items-center text-center">
               <div
-                className="inline-flex h-20 w-20 items-center justify-center rounded-2xl border-2 border-[#E16A3D] bg-[#020C12]"
+                className="inline-flex h-20 w-20 items-center justify-center rounded-2xl border-2 border-brand bg-background"
                 style={{ boxShadow: "0 0 40px -5px rgba(225,106,61,0.6)" }}
               >
-                <ShieldCheck className="h-10 w-10 text-[#E16A3D]" />
+                <ShieldCheck className="h-10 w-10 text-brand" />
               </div>
               <p className="mt-6 text-lg leading-relaxed text-white sm:text-xl">
                 If your campaign is not generating a positive return on ad
                 spend within the first 30 days, meaning you are making more
                 from closed jobs than you are spending on ads,{" "}
-                <span className="font-bold text-[#E16A3D]">
+                <span className="font-bold text-brand">
                   month 2 is completely free.
                 </span>{" "}
                 No asterisks. No conditions. No awkward conversations. We put
@@ -783,7 +801,7 @@ function Guarantee() {
                   "Guarantee terms defined clearly in writing before signing",
                 ].map((b) => (
                   <li key={b} className="flex items-start gap-3 text-white">
-                    <Check className="mt-1 h-5 w-5 shrink-0 text-[#006F7C]" />
+                    <Check className="mt-1 h-5 w-5 shrink-0 text-accent" />
                     <span className="text-base">{b}</span>
                   </li>
                 ))}
@@ -795,7 +813,7 @@ function Guarantee() {
             className="mt-6 rounded-2xl border bg-[#032435] p-8 text-center"
             style={{ borderColor: "#0A3A52" }}
           >
-            <p className="font-display text-2xl text-white sm:text-3xl">
+            <p className="text-2xl font-bold text-white sm:text-3xl">
               No long-term contracts. No lock-in.
             </p>
             <p className="mt-2 text-base text-[#8BAFC0]">
@@ -837,7 +855,7 @@ function Scarcity() {
           <Reveal delay={0.05}>
             <SectionHeading className="mt-6">
               We Only Work With{" "}
-              <span className="text-[#006F7C]">
+              <span className="bg-gradient-to-br from-accent to-[#00B5C7] bg-clip-text text-transparent">
                 One Business Per Category Per City.
               </span>
             </SectionHeading>
@@ -889,9 +907,9 @@ function FinalCTA() {
         <div className="mx-auto max-w-3xl text-center">
           <Reveal><Eyebrow>One Last Thing Before the Call</Eyebrow></Reveal>
           <Reveal delay={0.05}>
-            <h2 className="font-display text-4xl leading-[1.05] sm:text-5xl md:text-6xl">
+            <h2 className="text-balance text-4xl font-bold leading-[1.05] sm:text-5xl md:text-6xl">
               Complete Your Pre-Call Form.{" "}
-              <span className="text-[#006F7C]">It Takes 3 Minutes.</span>
+              <span className="bg-gradient-to-br from-accent to-[#00B5C7] bg-clip-text text-transparent">It Takes 3 Minutes.</span>
             </h2>
           </Reveal>
           <Reveal delay={0.15}>
@@ -925,8 +943,8 @@ function FinalCTA() {
 function Footer() {
   return (
     <footer
-      className="border-t"
-      style={{ borderColor: "rgba(255,255,255,0.05)", backgroundColor: "#020C12" }}
+      className="border-t bg-background"
+      style={{ borderColor: "rgba(255,255,255,0.05)" }}
     >
       <div className="mx-auto max-w-[1280px] px-5 py-12 sm:px-8">
         <div className="flex flex-col items-start gap-2 text-left">
@@ -982,11 +1000,31 @@ function Footer() {
 
 /* ---------------------------------- Page --------------------------------- */
 
-function ConfirmationPage() {
+function MobileStickyCTA({ visible }: { visible: boolean }) {
   return (
-    <div className="min-h-screen bg-[#020C12] text-white">
+    <div
+      className={`fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-background/95 px-4 py-3 backdrop-blur transition-all duration-300 sm:hidden ${
+        visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-full opacity-0"
+      }`}
+    >
+      <a
+        href={CTA_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="cta-shine glow-cta flex w-full items-center justify-center gap-2 rounded-full bg-brand py-3.5 text-sm font-semibold text-white"
+      >
+        Complete Your Pre-Call Form
+      </a>
+    </div>
+  );
+}
+
+function ConfirmationPage() {
+  const pastHero = usePastHero();
+  return (
+    <div className="min-h-screen bg-background text-white">
       <Header />
-      <main>
+      <main className="pb-16 sm:pb-0">
         <Hero />
         <FOMO />
         <WhatHappens />
@@ -997,6 +1035,7 @@ function ConfirmationPage() {
         <FinalCTA />
       </main>
       <Footer />
+      <MobileStickyCTA visible={pastHero} />
     </div>
   );
 }
