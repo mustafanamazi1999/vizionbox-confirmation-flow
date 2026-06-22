@@ -159,23 +159,25 @@ function Header() {
 /* --------------------------------- Hero ---------------------------------- */
 
 const HeroReveal = ({
-    children,
-    delay = 0,
-    className = "",
-  }: {
-    children: React.ReactNode;
-    delay?: number;
-    className?: string;
-  }) => (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5, delay, ease: "easeOut" }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
+  children,
+  delay = 0,
+  className = "",
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) => (
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.5, delay, ease: "easeOut" }}
+    className={className}
+  >
+    {children}
+  </motion.div>
+);
+
+function Hero() {
   return (
     <section className="relative overflow-hidden">
       <div className="grid-bg absolute inset-0" />
@@ -188,7 +190,7 @@ const HeroReveal = ({
       />
       <div className="orb absolute left-1/2 top-10 h-[360px] w-[360px] -translate-x-1/2 pointer-events-none" />
 
-      <div className="relative mx-auto max-w-[1280px] px-5 pt-4 sm:px-8 sm:pb-36" style={{ marginTop: "-20px" }}>
+      <div className="relative mx-auto max-w-[1280px] px-5 pt-4 mt-2 sm:px-8 sm:pb-36 md:mt-6">
         <div className="mx-auto max-w-3xl text-center">
           <HeroReveal>
             <Eyebrow>Your Audit is Confirmed</Eyebrow>
