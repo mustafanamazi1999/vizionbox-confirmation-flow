@@ -578,8 +578,8 @@ function Results() {
                 "linear-gradient(135deg, #006F7C 0%, #021820 100%)",
             }}
           >
-            <h3 className="font-display text-3xl text-white sm:text-5xl">
-              <span className="text-[#E16A3D]">$34</span> Average Cost Per
+            <h3 className="text-3xl font-bold text-white sm:text-5xl">
+              <span className="text-brand">$34</span> Average Cost Per
               Lead Across All Active Campaigns
             </h3>
             <p className="mt-3 text-base text-white/80">
