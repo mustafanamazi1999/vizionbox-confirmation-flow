@@ -190,7 +190,7 @@ function Hero() {
       />
       <div className="orb left-1/2 top-10 h-[360px] w-[360px] -translate-x-1/2" />
 
-      <div className="relative mx-auto max-w-[1280px] px-5 pt-0 pb-12 sm:px-8 sm:pt-0 sm:-mt-24 sm:pb-36">
+      <div className="relative mx-auto max-w-[1280px] px-5 -mt-10 pb-12 sm:px-8 sm:-mt-44 sm:pb-36">
         <div className="mx-auto max-w-3xl text-center">
           <HeroReveal>
             <Eyebrow>Your Audit is Confirmed</Eyebrow>
