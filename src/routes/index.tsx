@@ -788,52 +788,60 @@ function Guarantee() {
         </div>
 
         <Reveal delay={0.15} className="mx-auto mt-12 max-w-4xl">
-          <div
-            className="relative overflow-hidden rounded-3xl border p-8 sm:p-12"
-            style={{
-              borderColor: "#0A3A52",
-              background:
-                "linear-gradient(135deg, #006F7C 0%, #021820 100%)",
-            }}
+          <motion.div
+            whileHover={{ y: -6, scale: 1.005 }}
+            whileTap={TAP}
+            transition={{ type: "spring", stiffness: 200, damping: 20 }}
+            className="group relative overflow-hidden rounded-3xl border transition-all duration-500 hover:border-brand/60 hover:shadow-[0_30px_90px_-20px_rgba(225,106,61,0.45)] active:border-brand/60"
+            style={{ borderColor: "#0A3A52", background: "linear-gradient(135deg, #006F7C 0%, #021820 100%)" }}
           >
-            <div className="orb pointer-events-none absolute -left-32 -top-20 h-[360px] w-[360px]" />
-            <div className="orb pointer-events-none absolute -right-32 -bottom-20 h-[400px] w-[400px]" style={{ animationDelay: "-4s" }} />
-            <div className="relative flex flex-col items-center text-center">
-              <div
-                className="inline-flex h-20 w-20 items-center justify-center rounded-2xl border-2 border-brand bg-background"
-                style={{ boxShadow: "0 0 40px -5px rgba(225,106,61,0.6)" }}
-              >
-                <ShieldCheck className="h-10 w-10 text-brand" />
+            <div className="relative p-8 sm:p-12">
+              <div className="orb pointer-events-none absolute -left-32 -top-20 h-[360px] w-[360px]" />
+              <div className="orb pointer-events-none absolute -right-32 -bottom-20 h-[400px] w-[400px]" style={{ animationDelay: "-4s" }} />
+              <div className="relative flex flex-col items-center text-center">
+                <div
+                  className="inline-flex h-20 w-20 items-center justify-center rounded-2xl border-2 border-brand bg-background"
+                  style={{ boxShadow: "0 0 40px -5px rgba(225,106,61,0.6)" }}
+                >
+                  <ShieldCheck className="h-10 w-10 text-brand" />
+                </div>
+                <p className="mt-6 text-lg leading-relaxed text-white sm:text-xl">
+                  If your campaign is not generating a positive return on ad
+                  spend within the first 30 days, meaning you are making more
+                  from closed jobs than you are spending on ads,{" "}
+                  <span className="font-bold text-brand">
+                    month 2 is completely free.
+                  </span>{" "}
+                  No asterisks. No conditions. No awkward conversations. We put
+                  this in writing in every client agreement before a single
+                  dollar is spent on advertising.
+                </p>
+                <ul className="mt-6 grid gap-3 text-left sm:grid-cols-2">
+                  {[
+                    "Minimum $1,000 monthly ad spend directly with Google required to qualify",
+                    "Guarantee terms defined clearly in writing before signing",
+                  ].map((b) => (
+                    <li key={b} className="flex items-start gap-3 text-white">
+                      <Check className="mt-1 h-5 w-5 shrink-0 text-accent" />
+                      <span className="text-base">{b}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <p className="mt-6 text-lg leading-relaxed text-white sm:text-xl">
-                If your campaign is not generating a positive return on ad
-                spend within the first 30 days, meaning you are making more
-                from closed jobs than you are spending on ads,{" "}
-                <span className="font-bold text-brand">
-                  month 2 is completely free.
-                </span>{" "}
-                No asterisks. No conditions. No awkward conversations. We put
-                this in writing in every client agreement before a single
-                dollar is spent on advertising.
-              </p>
-              <ul className="mt-6 grid gap-3 text-left sm:grid-cols-2">
-                {[
-                  "Minimum $1,000 monthly ad spend directly with Google required to qualify",
-                  "Guarantee terms defined clearly in writing before signing",
-                ].map((b) => (
-                  <li key={b} className="flex items-start gap-3 text-white">
-                    <Check className="mt-1 h-5 w-5 shrink-0 text-accent" />
-                    <span className="text-base">{b}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
-          </div>
+          </motion.div>
 
-          <div
-            className="mt-6 rounded-2xl border bg-[#032435] p-8 text-center"
-            style={{ borderColor: "#0A3A52" }}
+          <motion.div
+            whileHover={{ y: -3 }}
+            whileTap={TAP}
+            transition={{ type: "spring", stiffness: 220, damping: 20 }}
+            className="group relative mx-auto mt-6 overflow-hidden rounded-xl border border-white/10 px-6 py-5 text-center backdrop-blur-sm sm:px-8 sm:py-6"
+            style={{ backgroundImage: "linear-gradient(120deg, rgba(0,111,124,0.12) 0%, rgba(0,111,124,0.06) 50%, rgba(0,111,124,0.12) 100%)" }}
           >
+            <div
+              className="animated-gradient absolute inset-0 -z-10 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-active:opacity-100"
+              style={{ backgroundImage: "linear-gradient(120deg, rgba(225,106,61,0.35), rgba(0,111,124,0.35), rgba(225,106,61,0.35))" }}
+            />
             <p className="text-2xl font-bold text-white sm:text-3xl">
               No long-term contracts. No lock-in.
             </p>
@@ -843,7 +851,7 @@ function Guarantee() {
             <div className="mt-6 flex justify-center">
               <CTAButton>Complete Your Pre-Call Form</CTAButton>
             </div>
-          </div>
+          </motion.div>
         </Reveal>
       </div>
     </section>
