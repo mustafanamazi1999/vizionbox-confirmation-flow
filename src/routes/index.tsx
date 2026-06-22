@@ -59,11 +59,7 @@ function CTAButton({
       href={CTA_URL}
       target="_blank"
       rel="noopener noreferrer"
-      className={`cta-btn group inline-flex ${full ? "w-full" : ""} items-center justify-center gap-2 rounded-full bg-[#E16A3D] font-semibold text-white transition-all duration-300 hover:scale-[1.03] hover:brightness-110 active:scale-[0.98] ${sizing} ${className}`}
-      style={{
-        boxShadow:
-          "0 10px 28px -8px #E16A3D, inset 0 1px 0 rgba(255,255,255,0.25)",
-      }}
+      className={`cta-btn cta-shine glow-cta group inline-flex ${full ? "w-full" : ""} items-center justify-center gap-2 rounded-full bg-[#E16A3D] font-semibold text-white transition-all duration-300 hover:scale-[1.03] hover:brightness-110 active:scale-[0.98] ${sizing} ${className}`}
     >
       <span className="relative z-10">{children}</span>
       <ArrowRight className="relative z-10 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
