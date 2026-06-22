@@ -348,20 +348,22 @@ function WhatHappens() {
         <div className="mt-14 grid gap-6 md:grid-cols-3">
           {cards.map((c, i) => (
             <Reveal key={c.n} delay={i * 0.08}>
-              <div
-                className="card-hover h-full rounded-2xl border bg-[#032435] p-8"
+              <motion.div
+                whileHover={CARD_HOVER}
+                whileTap={TAP}
+                className="h-full rounded-2xl border bg-[#032435] p-8 transition-shadow duration-300 hover:border-accent/40 hover:shadow-[0_20px_60px_-20px_rgba(0,111,124,0.5)]"
                 style={{ borderColor: "#0A3A52" }}
               >
-                <div className="font-display text-6xl text-[#006F7C]">
+                <div className="text-6xl font-bold text-accent">
                   {c.n}
                 </div>
-                <h3 className="mt-4 font-display text-2xl text-white">
+                <h3 className="mt-4 text-2xl font-bold text-white">
                   {c.t}
                 </h3>
                 <p className="mt-3 text-base leading-relaxed text-[#8BAFC0]">
                   {c.d}
                 </p>
-              </div>
+              </motion.div>
             </Reveal>
           ))}
         </div>
