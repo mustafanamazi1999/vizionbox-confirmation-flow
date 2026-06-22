@@ -190,7 +190,7 @@ function Hero() {
       />
       <div className="orb left-1/2 top-10 h-[360px] w-[360px] -translate-x-1/2" />
 
-      <div className="relative mx-auto max-w-[1280px] px-5 pb-12 sm:px-8 sm:pb-48" style={{ transform: "translateY(-120px)" }}>
+      <div className="relative mx-auto max-w-[1280px] px-5 pb-12 sm:px-16 sm:pb-48" style={{ transform: "translateY(-120px)" }}>
         <div className="mx-auto max-w-3xl text-center">
           <HeroReveal>
             <Eyebrow>Your Audit is Confirmed</Eyebrow>
