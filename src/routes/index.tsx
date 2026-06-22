@@ -12,7 +12,6 @@ import {
   FileText,
   Wrench,
   Layout,
-  Lock,
 } from "lucide-react";
 import logoAsset from "@/assets/vizionbox-logo.png.asset.json";
 import { usePastHero } from "@/hooks/use-past-hero";
@@ -59,11 +58,7 @@ function CTAButton({
       href={CTA_URL}
       target="_blank"
       rel="noopener noreferrer"
-      className={`cta-btn group inline-flex ${full ? "w-full" : ""} items-center justify-center gap-2 rounded-full bg-[#E16A3D] font-semibold text-white transition-all duration-300 hover:scale-[1.03] hover:brightness-110 active:scale-[0.98] ${sizing} ${className}`}
-      style={{
-        boxShadow:
-          "0 10px 28px -8px #E16A3D, inset 0 1px 0 rgba(255,255,255,0.25)",
-      }}
+      className={`cta-btn cta-shine glow-cta group inline-flex ${full ? "w-full" : ""} items-center justify-center gap-2 rounded-full bg-[#E16A3D] font-semibold text-white transition-all duration-300 hover:scale-[1.03] hover:brightness-110 active:scale-[0.98] ${sizing} ${className}`}
     >
       <span className="relative z-10">{children}</span>
       <ArrowRight className="relative z-10 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -147,9 +142,15 @@ function Header() {
         <CTAButton size="sm" className="hidden sm:inline-flex">
           Complete Pre-Call Form
         </CTAButton>
-        <CTAButton size="sm" className="sm:hidden">
+        <a
+          href={CTA_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="sm:hidden inline-flex items-center justify-center rounded-full bg-brand px-4 py-2 text-xs font-semibold text-white whitespace-nowrap"
+          style={{ boxShadow: "0 4px 14px -4px #E16A3D" }}
+        >
           Pre-Call Form
-        </CTAButton>
+        </a>
       </div>
     </header>
   );
@@ -158,8 +159,27 @@ function Header() {
 /* --------------------------------- Hero ---------------------------------- */
 
 function Hero() {
+  const HeroReveal = ({
+    children,
+    delay = 0,
+    className = "",
+  }: {
+    children: React.ReactNode;
+    delay?: number;
+    className?: string;
+  }) => (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "0px" }}
+      transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
   return (
-    <section className="relative overflow-hidden pt-0">
+    <section className="relative overflow-hidden">
       <div className="grid-bg absolute inset-0" />
       <div
         className="absolute inset-x-0 top-0 h-[600px]"
@@ -170,32 +190,32 @@ function Hero() {
       />
       <div className="orb left-1/2 top-10 h-[360px] w-[360px] -translate-x-1/2" />
 
-      <div className="relative mx-auto max-w-[1280px] px-5 pt-8 pb-12 sm:px-8 sm:pt-10 sm:pb-16">
+      <div className="relative mx-auto max-w-[1280px] px-5 pt-2 pb-12 sm:px-8 sm:pt-4 sm:pb-16">
         <div className="mx-auto max-w-3xl text-center">
-          <Reveal>
+          <HeroReveal>
             <Eyebrow>Your Audit is Confirmed</Eyebrow>
-          </Reveal>
-          <Reveal delay={0.05}>
+          </HeroReveal>
+          <HeroReveal delay={0.05}>
             <h1 className="text-balance text-5xl font-bold leading-[1.02] sm:text-6xl md:text-7xl lg:text-8xl">
               Your Google Ads Audit is{" "}
               <span className="bg-gradient-to-br from-accent to-[#00B5C7] bg-clip-text text-transparent">
                 Locked In.
               </span>
             </h1>
-          </Reveal>
-          <Reveal delay={0.15}>
+          </HeroReveal>
+          <HeroReveal delay={0.15}>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-[#8BAFC0] sm:text-xl">
               Before the call, take 90 seconds to read what's below. It will
               make our conversation significantly more valuable for you and
               your business. Everything here was prepared specifically for home
               service businesses in your market.
             </p>
-          </Reveal>
-          <Reveal delay={0.25}>
+          </HeroReveal>
+          <HeroReveal delay={0.25}>
             <div className="mt-10 flex justify-center">
               <CTAButton>Complete Your Pre-Call Form</CTAButton>
             </div>
-          </Reveal>
+          </HeroReveal>
         </div>
       </div>
       <div id="hero-sentinel" aria-hidden="true" />
@@ -232,7 +252,7 @@ function FOMO() {
           <Reveal delay={0.05}>
             <SectionHeading>
               Your Competitors Are Buying the Top Spots on Google{" "}
-              <span className="text-[#E16A3D]">Right Now.</span>
+              <span className="bg-gradient-to-br from-accent to-[#00B5C7] bg-clip-text text-transparent">Right Now.</span>
             </SectionHeading>
           </Reveal>
           <Reveal delay={0.15}>
@@ -351,12 +371,12 @@ function WhatHappens() {
               <motion.div
                 whileHover={CARD_HOVER}
                 whileTap={TAP}
-                className="h-full rounded-2xl border bg-[#032435] p-8 transition-shadow duration-300 hover:border-accent/40 hover:shadow-[0_20px_60px_-20px_rgba(0,111,124,0.5)]"
+                className="group h-full rounded-2xl border bg-[#032435] p-8 transition-shadow duration-300 hover:border-accent/40 hover:shadow-[0_20px_60px_-20px_rgba(0,111,124,0.5)] active:border-accent/40 active:shadow-[0_20px_60px_-20px_rgba(0,111,124,0.5)]"
                 style={{ borderColor: "#0A3A52" }}
               >
-                <div className="text-6xl font-bold text-accent">
+                <span className="inline-block text-6xl font-bold text-accent transition-all duration-500 drop-shadow-[0_0_8px_rgba(0,111,124,0.25)] group-hover:scale-[1.35] group-hover:brightness-150 group-hover:drop-shadow-[0_0_24px_rgba(0,181,199,0.95)] group-active:scale-[1.35] group-active:brightness-150 group-active:drop-shadow-[0_0_24px_rgba(0,181,199,0.95)]">
                   {c.n}
-                </div>
+                </span>
                 <h3 className="mt-4 text-2xl font-bold text-white">
                   {c.t}
                 </h3>
@@ -767,52 +787,60 @@ function Guarantee() {
         </div>
 
         <Reveal delay={0.15} className="mx-auto mt-12 max-w-4xl">
-          <div
-            className="relative overflow-hidden rounded-3xl border p-8 sm:p-12"
-            style={{
-              borderColor: "#0A3A52",
-              background:
-                "linear-gradient(135deg, #006F7C 0%, #021820 100%)",
-            }}
+          <motion.div
+            whileHover={{ y: -6, scale: 1.005 }}
+            whileTap={TAP}
+            transition={{ type: "spring", stiffness: 200, damping: 20 }}
+            className="group relative overflow-hidden rounded-3xl border transition-all duration-500 hover:border-brand/60 hover:shadow-[0_30px_90px_-20px_rgba(225,106,61,0.45)] active:border-brand/60"
+            style={{ borderColor: "#0A3A52", background: "linear-gradient(135deg, #006F7C 0%, #021820 100%)" }}
           >
-            <div className="orb pointer-events-none absolute -left-32 -top-20 h-[360px] w-[360px]" />
-            <div className="orb pointer-events-none absolute -right-32 -bottom-20 h-[400px] w-[400px]" style={{ animationDelay: "-4s" }} />
-            <div className="relative flex flex-col items-center text-center">
-              <div
-                className="inline-flex h-20 w-20 items-center justify-center rounded-2xl border-2 border-brand bg-background"
-                style={{ boxShadow: "0 0 40px -5px rgba(225,106,61,0.6)" }}
-              >
-                <ShieldCheck className="h-10 w-10 text-brand" />
+            <div className="relative p-8 sm:p-12">
+              <div className="orb pointer-events-none absolute -left-32 -top-20 h-[360px] w-[360px]" />
+              <div className="orb pointer-events-none absolute -right-32 -bottom-20 h-[400px] w-[400px]" style={{ animationDelay: "-4s" }} />
+              <div className="relative flex flex-col items-center text-center">
+                <div
+                  className="inline-flex h-20 w-20 items-center justify-center rounded-2xl border-2 border-brand bg-background"
+                  style={{ boxShadow: "0 0 40px -5px rgba(225,106,61,0.6)" }}
+                >
+                  <ShieldCheck className="h-10 w-10 text-brand" />
+                </div>
+                <p className="mt-6 text-lg leading-relaxed text-white sm:text-xl">
+                  If your campaign is not generating a positive return on ad
+                  spend within the first 30 days, meaning you are making more
+                  from closed jobs than you are spending on ads,{" "}
+                  <span className="font-bold text-brand">
+                    month 2 is completely free.
+                  </span>{" "}
+                  No asterisks. No conditions. No awkward conversations. We put
+                  this in writing in every client agreement before a single
+                  dollar is spent on advertising.
+                </p>
+                <ul className="mt-6 grid gap-3 text-left sm:grid-cols-2">
+                  {[
+                    "Minimum $1,000 monthly ad spend directly with Google required to qualify",
+                    "Guarantee terms defined clearly in writing before signing",
+                  ].map((b) => (
+                    <li key={b} className="flex items-start gap-3 text-white">
+                      <Check className="mt-1 h-5 w-5 shrink-0 text-accent" />
+                      <span className="text-base">{b}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <p className="mt-6 text-lg leading-relaxed text-white sm:text-xl">
-                If your campaign is not generating a positive return on ad
-                spend within the first 30 days, meaning you are making more
-                from closed jobs than you are spending on ads,{" "}
-                <span className="font-bold text-brand">
-                  month 2 is completely free.
-                </span>{" "}
-                No asterisks. No conditions. No awkward conversations. We put
-                this in writing in every client agreement before a single
-                dollar is spent on advertising.
-              </p>
-              <ul className="mt-6 grid gap-3 text-left sm:grid-cols-2">
-                {[
-                  "Minimum $1,000 monthly ad spend directly with Google required to qualify",
-                  "Guarantee terms defined clearly in writing before signing",
-                ].map((b) => (
-                  <li key={b} className="flex items-start gap-3 text-white">
-                    <Check className="mt-1 h-5 w-5 shrink-0 text-accent" />
-                    <span className="text-base">{b}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
-          </div>
+          </motion.div>
 
-          <div
-            className="mt-6 rounded-2xl border bg-[#032435] p-8 text-center"
-            style={{ borderColor: "#0A3A52" }}
+          <motion.div
+            whileHover={{ y: -3 }}
+            whileTap={TAP}
+            transition={{ type: "spring", stiffness: 220, damping: 20 }}
+            className="group relative mx-auto mt-6 overflow-hidden rounded-xl border border-white/10 px-6 py-5 text-center backdrop-blur-sm sm:px-8 sm:py-6"
+            style={{ backgroundImage: "linear-gradient(120deg, rgba(0,111,124,0.12) 0%, rgba(0,111,124,0.06) 50%, rgba(0,111,124,0.12) 100%)" }}
           >
+            <div
+              className="animated-gradient absolute inset-0 -z-10 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-active:opacity-100"
+              style={{ backgroundImage: "linear-gradient(120deg, rgba(225,106,61,0.35), rgba(0,111,124,0.35), rgba(225,106,61,0.35))" }}
+            />
             <p className="text-2xl font-bold text-white sm:text-3xl">
               No long-term contracts. No lock-in.
             </p>
@@ -822,7 +850,7 @@ function Guarantee() {
             <div className="mt-6 flex justify-center">
               <CTAButton>Complete Your Pre-Call Form</CTAButton>
             </div>
-          </div>
+          </motion.div>
         </Reveal>
       </div>
     </section>
@@ -841,14 +869,10 @@ function Scarcity() {
         <div className="mx-auto max-w-3xl text-center">
           <Reveal>
             <span
-              className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold uppercase tracking-[0.18em] text-white"
-              style={{
-                background:
-                  "linear-gradient(135deg, #E16A3D 0%, #b8472a 100%)",
-                boxShadow: "0 0 30px -5px rgba(225,106,61,0.6)",
-              }}
+              className="inline-flex items-center gap-2.5 rounded-full border-2 border-destructive/60 bg-destructive/15 px-6 py-3 text-sm font-bold uppercase tracking-wider"
+              style={{ color: "#ef4444", boxShadow: "0 0 30px -5px rgba(220,38,38,0.5)" }}
             >
-              <Lock className="h-3.5 w-3.5" />
+              <span className="h-2 w-2 animate-pulse rounded-full" style={{ background: "#ef4444" }} />
               Limited Availability
             </span>
           </Reveal>
@@ -856,8 +880,9 @@ function Scarcity() {
             <SectionHeading className="mt-6">
               We Only Work With{" "}
               <span className="bg-gradient-to-br from-accent to-[#00B5C7] bg-clip-text text-transparent">
-                One Business Per Category Per City.
-              </span>
+                One Business
+              </span>{" "}
+              Per Category Per City.
             </SectionHeading>
           </Reveal>
           <Reveal delay={0.15}>
@@ -871,8 +896,11 @@ function Scarcity() {
         </div>
 
         <Reveal delay={0.2} className="mx-auto mt-10 max-w-3xl">
-          <div
-            className="rounded-2xl border bg-[#032435] p-8 text-center"
+          <motion.div
+            whileHover={{ y: -4, scale: 1.01 }}
+            whileTap={TAP}
+            transition={{ type: "spring", stiffness: 280, damping: 22 }}
+            className="group relative overflow-hidden rounded-2xl border transition-all duration-500 hover:border-brand/60 hover:shadow-[0_20px_60px_-10px_rgba(225,106,61,0.4)] active:border-brand/60 bg-[#032435] p-8 text-center"
             style={{ borderColor: "rgba(225,106,61,0.35)" }}
           >
             <p className="text-lg text-white">
@@ -883,7 +911,7 @@ function Scarcity() {
               But other businesses in your area are actively looking for
               exactly what you just booked.
             </p>
-          </div>
+          </motion.div>
         </Reveal>
       </div>
     </section>
