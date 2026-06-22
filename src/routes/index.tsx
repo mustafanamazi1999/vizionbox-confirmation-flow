@@ -705,7 +705,7 @@ function Testimonials() {
       className="border-t"
       style={{ borderColor: "rgba(255,255,255,0.05)", backgroundColor: "#021820" }}
     >
-      <div className="mx-auto max-w-[1280px] px-5 pt-24 pb-0 sm:px-8 sm:pt-32 sm:pb-0">
+      <div className="mx-auto max-w-[1280px] px-5 py-24 sm:px-8 sm:py-32">
         <div className="mx-auto max-w-3xl text-center">
           <Reveal><Eyebrow>Testimonials</Eyebrow></Reveal>
           <Reveal delay={0.05}>
@@ -718,13 +718,15 @@ function Testimonials() {
         <div className="mt-14 grid gap-6 md:grid-cols-3">
           {ts.map((t, i) => (
             <Reveal key={t.name} delay={i * 0.08}>
-              <div
-                className="card-hover h-full rounded-2xl border bg-[#032435] p-8"
+              <motion.div
+                whileHover={CARD_HOVER}
+                whileTap={TAP}
+                className="h-full rounded-2xl border bg-[#032435] p-8 transition-shadow duration-300 hover:border-accent/40 hover:shadow-[0_20px_60px_-20px_rgba(0,111,124,0.5)]"
                 style={{ borderColor: "#0A3A52", borderLeft: "3px solid #006F7C" }}
               >
                 <div className="flex gap-1">
                   {[0, 1, 2, 3, 4].map((s) => (
-                    <Star key={s} className="h-4 w-4 fill-[#006F7C] text-[#006F7C]" />
+                    <Star key={s} className="h-4 w-4 fill-accent text-accent" />
                   ))}
                 </div>
                 <p className="mt-5 text-lg italic leading-relaxed text-white">
@@ -742,7 +744,7 @@ function Testimonials() {
                     <p className="text-sm text-[#8BAFC0]">{t.role}</p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </Reveal>
           ))}
         </div>
