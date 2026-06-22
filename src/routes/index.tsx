@@ -372,12 +372,12 @@ function WhatHappens() {
               <motion.div
                 whileHover={CARD_HOVER}
                 whileTap={TAP}
-                className="h-full rounded-2xl border bg-[#032435] p-8 transition-shadow duration-300 hover:border-accent/40 hover:shadow-[0_20px_60px_-20px_rgba(0,111,124,0.5)]"
+                className="group h-full rounded-2xl border bg-[#032435] p-8 transition-shadow duration-300 hover:border-accent/40 hover:shadow-[0_20px_60px_-20px_rgba(0,111,124,0.5)] active:border-accent/40 active:shadow-[0_20px_60px_-20px_rgba(0,111,124,0.5)]"
                 style={{ borderColor: "#0A3A52" }}
               >
-                <div className="text-6xl font-bold text-accent">
+                <span className="inline-block text-6xl font-bold text-accent transition-all duration-500 drop-shadow-[0_0_8px_rgba(0,111,124,0.25)] group-hover:scale-[1.35] group-hover:brightness-150 group-hover:drop-shadow-[0_0_24px_rgba(0,181,199,0.95)] group-active:scale-[1.35] group-active:brightness-150 group-active:drop-shadow-[0_0_24px_rgba(0,181,199,0.95)]">
                   {c.n}
-                </div>
+                </span>
                 <h3 className="mt-4 text-2xl font-bold text-white">
                   {c.t}
                 </h3>
