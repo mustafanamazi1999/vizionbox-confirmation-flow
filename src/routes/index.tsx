@@ -159,7 +159,7 @@ function Header() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden pt-0">
       <div className="grid-bg absolute inset-0" />
       <div
         className="absolute inset-x-0 top-0 h-[600px]"
@@ -170,15 +170,17 @@ function Hero() {
       />
       <div className="orb left-1/2 top-10 h-[360px] w-[360px] -translate-x-1/2" />
 
-      <div className="relative mx-auto max-w-[1280px] px-5 pt-4 pb-12 sm:px-8 sm:pt-6 sm:pb-16">
+      <div className="relative mx-auto max-w-[1280px] px-5 pt-8 pb-12 sm:px-8 sm:pt-10 sm:pb-16">
         <div className="mx-auto max-w-3xl text-center">
           <Reveal>
             <Eyebrow>Your Audit is Confirmed</Eyebrow>
           </Reveal>
           <Reveal delay={0.05}>
-            <h1 className="font-display text-5xl leading-[1.02] sm:text-6xl md:text-7xl lg:text-8xl">
+            <h1 className="text-balance text-5xl font-bold leading-[1.02] sm:text-6xl md:text-7xl lg:text-8xl">
               Your Google Ads Audit is{" "}
-              <span className="text-[#006F7C]">Locked In.</span>
+              <span className="bg-gradient-to-br from-accent to-[#00B5C7] bg-clip-text text-transparent">
+                Locked In.
+              </span>
             </h1>
           </Reveal>
           <Reveal delay={0.15}>
@@ -196,6 +198,7 @@ function Hero() {
           </Reveal>
         </div>
       </div>
+      <div id="hero-sentinel" aria-hidden="true" />
     </section>
   );
 }
