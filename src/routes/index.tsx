@@ -267,7 +267,7 @@ function FOMO() {
                   <span className="mb-1 inline-block rounded bg-[#E16A3D]/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#E16A3D]">
                     Sponsored
                   </span>
-                  <h3 className="font-display text-lg text-white sm:text-xl">
+                  <h3 className="text-lg font-bold text-white sm:text-xl">
                     {ad.headline}
                   </h3>
                   <p className="text-sm text-[#8BAFC0]">{ad.url}</p>
