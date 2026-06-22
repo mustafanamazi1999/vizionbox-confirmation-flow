@@ -42,7 +42,6 @@
 
 :root {
   --radius: 0.75rem;
-
   --navy-950: oklch(0.21 0.038 260);
   --navy-900: oklch(0.25 0.042 260);
   --navy-800: oklch(0.30 0.045 260);
@@ -50,7 +49,6 @@
   --accent-cyan: #006F7C;
   --brand: #E16A3D;
   --brand-foreground: oklch(0.99 0.005 80);
-
   --background: var(--navy-950);
   --foreground: oklch(0.985 0.003 250);
   --card: oklch(0.26 0.04 260);
@@ -79,7 +77,18 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: "Inter", system-ui, -apple-system, sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01";
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    letter-spacing: -0.03em;
+    font-feature-settings: "ss01", "cv11";
+  }
+  ::selection {
+    background: var(--brand);
+    color: oklch(0.99 0.005 80);
   }
 }
 
@@ -89,6 +98,10 @@
     linear-gradient(90deg, oklch(1 0 0 / 0.10) 1px, transparent 1px);
   background-size: 56px 56px;
   mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black, transparent 90%);
+}
+
+@utility text-balance {
+  text-wrap: balance;
 }
 
 @utility glow-cta {
@@ -117,3 +130,21 @@
   50% { transform: translate(20px, -30px) scale(1.05); }
 }
 @utility orb { animation: float-orb 12s ease-in-out infinite; }
+
+@keyframes marquee-x {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@utility marquee-track {
+  animation: marquee-x 40s linear infinite;
+  width: max-content;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@utility animated-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
