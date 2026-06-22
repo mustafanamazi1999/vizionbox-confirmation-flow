@@ -943,8 +943,8 @@ function FinalCTA() {
 function Footer() {
   return (
     <footer
-      className="border-t"
-      style={{ borderColor: "rgba(255,255,255,0.05)", backgroundColor: "#020C12" }}
+      className="border-t bg-background"
+      style={{ borderColor: "rgba(255,255,255,0.05)" }}
     >
       <div className="mx-auto max-w-[1280px] px-5 py-12 sm:px-8">
         <div className="flex flex-col items-start gap-2 text-left">
