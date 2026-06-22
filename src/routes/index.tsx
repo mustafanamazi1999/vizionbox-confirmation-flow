@@ -523,14 +523,16 @@ function Results() {
         <div className="mt-14 grid gap-6 md:grid-cols-2">
           {cards.map((c, i) => (
             <Reveal key={c.title} delay={i * 0.08}>
-              <div
-                className="card-hover h-full rounded-2xl border bg-[#032435] p-8"
+              <motion.div
+                whileHover={CARD_HOVER}
+                whileTap={TAP}
+                className="h-full rounded-2xl border bg-[#032435] p-8 transition-shadow duration-300 hover:border-accent/40 hover:shadow-[0_20px_60px_-20px_rgba(0,111,124,0.5)]"
                 style={{ borderColor: "#0A3A52" }}
               >
                 <div className="flex items-center justify-between gap-4">
                   <div className="min-w-0">
                     <div className="text-3xl">{c.emoji}</div>
-                    <h3 className="mt-2 font-display text-2xl text-white">
+                    <h3 className="mt-2 text-2xl font-bold text-white">
                       {c.title}
                     </h3>
                     <p className="text-sm text-[#8BAFC0]">{c.loc}</p>
@@ -559,10 +561,10 @@ function Results() {
                     {c.spend}
                   </span>
                 </div>
-                <p className="mt-5 border-l-2 border-[#006F7C] pl-4 text-base italic text-white">
+                <p className="mt-5 border-l-2 border-accent pl-4 text-base italic text-white">
                   "{c.quote}"
                 </p>
-              </div>
+              </motion.div>
             </Reveal>
           ))}
         </div>
