@@ -188,9 +188,9 @@ function Hero() {
             "radial-gradient(ellipse at top, rgba(0,111,124,0.35), transparent 60%)",
         }}
       />
-      <div className="orb left-1/2 top-10 h-[360px] w-[360px] -translate-x-1/2" />
+      <div className="orb absolute left-1/2 top-10 h-[360px] w-[360px] -translate-x-1/2 pointer-events-none" />
 
-      <div className="relative mx-auto max-w-[1280px] px-5 pb-12 sm:px-16 sm:pb-48" style={{ transform: "translateY(-160px)" }}>
+      <div className="relative mx-auto max-w-[1280px] px-5 pb-12 sm:px-8 sm:pb-36 md:-mt-20">
         <div className="mx-auto max-w-3xl text-center">
           <HeroReveal>
             <Eyebrow>Your Audit is Confirmed</Eyebrow>
