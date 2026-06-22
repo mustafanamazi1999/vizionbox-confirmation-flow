@@ -757,14 +757,8 @@ function Testimonials() {
 
 function Guarantee() {
   return (
-    <section
-      className="relative overflow-hidden border-t"
-      style={{ borderColor: "rgba(255,255,255,0.05)" }}
-    >
-      <div className="orb -left-32 top-32 h-[360px] w-[360px]" />
-      <div className="orb -right-32 bottom-32 h-[400px] w-[400px]" style={{ animationDelay: "-4s" }} />
-
-      <div className="relative mx-auto max-w-[1280px] px-5 pt-0 pb-24 sm:px-8 sm:pt-0 sm:pb-32">
+    <section className="relative overflow-hidden border-t border-white/5 py-24 sm:py-32">
+      <div className="relative mx-auto max-w-[1280px] px-5 sm:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <Reveal><Eyebrow>The Guarantee</Eyebrow></Reveal>
           <Reveal delay={0.05}>
@@ -774,25 +768,27 @@ function Guarantee() {
 
         <Reveal delay={0.15} className="mx-auto mt-12 max-w-4xl">
           <div
-            className="rounded-3xl border p-8 sm:p-12"
+            className="relative overflow-hidden rounded-3xl border p-8 sm:p-12"
             style={{
               borderColor: "#0A3A52",
               background:
                 "linear-gradient(135deg, #006F7C 0%, #021820 100%)",
             }}
           >
-            <div className="flex flex-col items-center text-center">
+            <div className="orb pointer-events-none absolute -left-32 -top-20 h-[360px] w-[360px]" />
+            <div className="orb pointer-events-none absolute -right-32 -bottom-20 h-[400px] w-[400px]" style={{ animationDelay: "-4s" }} />
+            <div className="relative flex flex-col items-center text-center">
               <div
-                className="inline-flex h-20 w-20 items-center justify-center rounded-2xl border-2 border-[#E16A3D] bg-[#020C12]"
+                className="inline-flex h-20 w-20 items-center justify-center rounded-2xl border-2 border-brand bg-background"
                 style={{ boxShadow: "0 0 40px -5px rgba(225,106,61,0.6)" }}
               >
-                <ShieldCheck className="h-10 w-10 text-[#E16A3D]" />
+                <ShieldCheck className="h-10 w-10 text-brand" />
               </div>
               <p className="mt-6 text-lg leading-relaxed text-white sm:text-xl">
                 If your campaign is not generating a positive return on ad
                 spend within the first 30 days, meaning you are making more
                 from closed jobs than you are spending on ads,{" "}
-                <span className="font-bold text-[#E16A3D]">
+                <span className="font-bold text-brand">
                   month 2 is completely free.
                 </span>{" "}
                 No asterisks. No conditions. No awkward conversations. We put
@@ -805,7 +801,7 @@ function Guarantee() {
                   "Guarantee terms defined clearly in writing before signing",
                 ].map((b) => (
                   <li key={b} className="flex items-start gap-3 text-white">
-                    <Check className="mt-1 h-5 w-5 shrink-0 text-[#006F7C]" />
+                    <Check className="mt-1 h-5 w-5 shrink-0 text-accent" />
                     <span className="text-base">{b}</span>
                   </li>
                 ))}
@@ -817,7 +813,7 @@ function Guarantee() {
             className="mt-6 rounded-2xl border bg-[#032435] p-8 text-center"
             style={{ borderColor: "#0A3A52" }}
           >
-            <p className="font-display text-2xl text-white sm:text-3xl">
+            <p className="text-2xl font-bold text-white sm:text-3xl">
               No long-term contracts. No lock-in.
             </p>
             <p className="mt-2 text-base text-[#8BAFC0]">
