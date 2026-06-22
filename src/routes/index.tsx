@@ -253,7 +253,7 @@ function FOMO() {
           <Reveal delay={0.05}>
             <SectionHeading>
               Your Competitors Are Buying the Top Spots on Google{" "}
-              <span className="text-[#E16A3D]">Right Now.</span>
+              <span className="bg-gradient-to-br from-accent to-[#00B5C7] bg-clip-text text-transparent">Right Now.</span>
             </SectionHeading>
           </Reveal>
           <Reveal delay={0.15}>
