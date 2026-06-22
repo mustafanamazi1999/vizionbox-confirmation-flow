@@ -15,6 +15,13 @@ import {
   Lock,
 } from "lucide-react";
 import logoAsset from "@/assets/vizionbox-logo.png.asset.json";
+import { usePastHero } from "@/hooks/use-past-hero";
+
+const TAP = { scale: 0.98 } as const;
+const CARD_HOVER = {
+  y: -4,
+  transition: { duration: 0.25, ease: [0.22, 1, 0.36, 1] as const },
+} as const;
 
 const CTA_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSdH_EWOxKK5Vc-un0vtAlMwyAHwSkqCu5_dHdAWIk25G_iO0g/viewform";
