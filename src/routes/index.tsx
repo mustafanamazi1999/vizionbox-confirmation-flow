@@ -412,7 +412,7 @@ function ProofBar() {
       <div className="marquee-track flex w-max gap-10 py-5 whitespace-nowrap">
         {doubled.map((it, i) => (
           <div key={i} className="flex items-center gap-10">
-            <span className="font-display text-lg uppercase tracking-wide text-white sm:text-xl">
+            <span className="text-lg font-bold uppercase tracking-wide text-white sm:text-xl">
               {it}
             </span>
             <span className="text-white/70">★</span>
