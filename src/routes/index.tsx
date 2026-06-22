@@ -907,9 +907,9 @@ function FinalCTA() {
         <div className="mx-auto max-w-3xl text-center">
           <Reveal><Eyebrow>One Last Thing Before the Call</Eyebrow></Reveal>
           <Reveal delay={0.05}>
-            <h2 className="font-display text-4xl leading-[1.05] sm:text-5xl md:text-6xl">
+            <h2 className="text-balance text-4xl font-bold leading-[1.05] sm:text-5xl md:text-6xl">
               Complete Your Pre-Call Form.{" "}
-              <span className="text-[#006F7C]">It Takes 3 Minutes.</span>
+              <span className="bg-gradient-to-br from-accent to-[#00B5C7] bg-clip-text text-transparent">It Takes 3 Minutes.</span>
             </h2>
           </Reveal>
           <Reveal delay={0.15}>
