@@ -188,7 +188,7 @@ const HeroReveal = ({
       />
       <div className="orb absolute left-1/2 top-10 h-[360px] w-[360px] -translate-x-1/2 pointer-events-none" />
 
-      <div className="relative mx-auto max-w-[1280px] px-5 pt-4 -mt-12 sm:px-8 sm:pb-36 md:-mt-24">
+      <div className="relative mx-auto max-w-[1280px] px-5 pt-4 -mt-4 sm:px-8 sm:pb-36 md:-mt-10">
         <div className="mx-auto max-w-3xl text-center">
           <HeroReveal>
             <Eyebrow>Your Audit is Confirmed</Eyebrow>
