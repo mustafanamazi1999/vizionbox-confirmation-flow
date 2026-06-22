@@ -1000,11 +1000,31 @@ function Footer() {
 
 /* ---------------------------------- Page --------------------------------- */
 
-function ConfirmationPage() {
+function MobileStickyCTA({ visible }: { visible: boolean }) {
   return (
-    <div className="min-h-screen bg-[#020C12] text-white">
+    <div
+      className={`fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-background/95 px-4 py-3 backdrop-blur transition-all duration-300 sm:hidden ${
+        visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-full opacity-0"
+      }`}
+    >
+      <a
+        href={CTA_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="cta-shine glow-cta flex w-full items-center justify-center gap-2 rounded-full bg-brand py-3.5 text-sm font-semibold text-white"
+      >
+        Complete Your Pre-Call Form
+      </a>
+    </div>
+  );
+}
+
+function ConfirmationPage() {
+  const pastHero = usePastHero();
+  return (
+    <div className="min-h-screen bg-background text-white">
       <Header />
-      <main>
+      <main className="pb-16 sm:pb-0">
         <Hero />
         <FOMO />
         <WhatHappens />
@@ -1015,6 +1035,7 @@ function ConfirmationPage() {
         <FinalCTA />
       </main>
       <Footer />
+      <MobileStickyCTA visible={pastHero} />
     </div>
   );
 }
