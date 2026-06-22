@@ -158,8 +158,7 @@ function Header() {
 
 /* --------------------------------- Hero ---------------------------------- */
 
-function Hero() {
-  const HeroReveal = ({
+const HeroReveal = ({
     children,
     delay = 0,
     className = "",
@@ -169,10 +168,9 @@ function Hero() {
     className?: string;
   }) => (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "0px" }}
-      transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5, delay, ease: "easeOut" }}
       className={className}
     >
       {children}
@@ -190,7 +188,7 @@ function Hero() {
       />
       <div className="orb absolute left-1/2 top-10 h-[360px] w-[360px] -translate-x-1/2 pointer-events-none" />
 
-      <div className="relative mx-auto max-w-[1280px] px-5 pb-12 sm:px-8 sm:pb-36 md:-mt-20">
+      <div className="relative mx-auto max-w-[1280px] px-5 pt-4 -mt-12 sm:px-8 sm:pb-36 md:-mt-24">
         <div className="mx-auto max-w-3xl text-center">
           <HeroReveal>
             <Eyebrow>Your Audit is Confirmed</Eyebrow>
