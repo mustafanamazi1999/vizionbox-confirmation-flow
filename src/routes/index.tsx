@@ -143,9 +143,15 @@ function Header() {
         <CTAButton size="sm" className="hidden sm:inline-flex">
           Complete Pre-Call Form
         </CTAButton>
-        <CTAButton size="sm" className="sm:hidden">
+        <a
+          href={CTA_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="sm:hidden inline-flex items-center justify-center rounded-full bg-brand px-4 py-2 text-xs font-semibold text-white whitespace-nowrap"
+          style={{ boxShadow: "0 4px 14px -4px #E16A3D" }}
+        >
           Pre-Call Form
-        </CTAButton>
+        </a>
       </div>
     </header>
   );
