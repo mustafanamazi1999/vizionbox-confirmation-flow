@@ -855,7 +855,7 @@ function Scarcity() {
           <Reveal delay={0.05}>
             <SectionHeading className="mt-6">
               We Only Work With{" "}
-              <span className="text-[#006F7C]">
+              <span className="bg-gradient-to-br from-accent to-[#00B5C7] bg-clip-text text-transparent">
                 One Business Per Category Per City.
               </span>
             </SectionHeading>
