@@ -647,18 +647,20 @@ function System() {
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((it, i) => (
             <Reveal key={it.t} delay={i * 0.08}>
-              <div
-                className="card-hover h-full rounded-2xl border bg-[#032435] p-6"
+              <motion.div
+                whileHover={CARD_HOVER}
+                whileTap={TAP}
+                className="h-full rounded-2xl border bg-[#032435] p-6 transition-shadow duration-300 hover:border-accent/40 hover:shadow-[0_20px_60px_-20px_rgba(0,111,124,0.5)]"
                 style={{ borderColor: "#0A3A52" }}
               >
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-[#006F7C]/15 text-[#006F7C]">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-accent/15 text-accent">
                   <it.icon className="h-5 w-5" />
                 </div>
-                <h3 className="mt-4 font-display text-xl text-white">{it.t}</h3>
+                <h3 className="mt-4 text-xl font-bold text-white">{it.t}</h3>
                 <p className="mt-2 text-base leading-relaxed text-[#8BAFC0]">
                   {it.d}
                 </p>
-              </div>
+              </motion.div>
             </Reveal>
           ))}
         </div>
