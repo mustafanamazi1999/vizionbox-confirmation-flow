@@ -444,7 +444,7 @@ function AnimatedCPL({ from, to }: { from: number; to: number }) {
   return (
     <motion.span
       ref={ref}
-      className="font-display text-6xl font-bold text-[#E16A3D] sm:text-7xl"
+      className="text-6xl font-bold text-brand sm:text-7xl"
     >
       {rounded}
     </motion.span>
