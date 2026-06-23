@@ -13,12 +13,13 @@ import {
   Wrench,
   Layout,
 } from "lucide-react";
-import logoAsset from "@/assets/vizionbox-logo.png.asset.json";
 import { usePastHero } from "@/hooks/use-past-hero";
+
+const LOGO_SRC = "/vizionbox-logo.png";
 
 const TAP = { scale: 0.98 } as const;
 const CARD_HOVER = {
-  y: -4,
+  y: -5,
   transition: { duration: 0.25, ease: [0.22, 1, 0.36, 1] as const },
 } as const;
 
@@ -54,15 +55,18 @@ function CTAButton({
 }) {
   const sizing = size === "sm" ? "px-5 py-2.5 text-sm" : "px-8 py-5 text-base";
   return (
-    <a
+    <motion.a
       href={CTA_URL}
       target="_blank"
       rel="noopener noreferrer"
-      className={`cta-btn cta-shine glow-cta group inline-flex ${full ? "w-full" : ""} items-center justify-center gap-2 rounded-full bg-[#E16A3D] font-semibold text-white transition-all duration-300 hover:scale-[1.03] hover:brightness-110 active:scale-[0.98] ${sizing} ${className}`}
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+      transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+      className={`cta-btn cta-shine glow-cta group inline-flex ${full ? "w-full" : ""} items-center justify-center gap-2 rounded-full bg-[#E16A3D] font-semibold text-white transition-colors duration-300 hover:brightness-110 ${sizing} ${className}`}
     >
       <span className="relative z-10">{children}</span>
       <ArrowRight className="relative z-10 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-    </a>
+    </motion.a>
   );
 }
 
@@ -79,7 +83,7 @@ function Reveal({
     <motion.div
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
       className={className}
     >
@@ -119,13 +123,13 @@ function Header() {
     <header
       className="sticky top-0 z-50 border-b"
       style={{
-        backgroundColor: "rgba(2,12,18,0.7)",
-        backdropFilter: "blur(12px)",
-        WebkitBackdropFilter: "blur(12px)",
+        backgroundColor: "rgba(21,28,40,0.7)",
+        backdropFilter: "blur(20px)",
+        WebkitBackdropFilter: "blur(20px)",
         borderColor: "rgba(255,255,255,0.05)",
       }}
     >
-      <div className="mx-auto flex max-w-[1280px] items-center justify-between px-5 py-3 sm:px-8">
+      <div className="mx-auto flex max-w-[1280px] items-center justify-between px-5 py-[5px] sm:px-8 sm:py-[6px]">
         <a
           href="https://thevizionbox.com"
           target="_blank"
@@ -134,20 +138,16 @@ function Header() {
           aria-label="VizionBox home"
         >
           <img
-            src={logoAsset.url}
+            src={LOGO_SRC}
             alt="VizionBox"
             style={{ height: "112px", width: "auto", objectFit: "contain" }}
           />
         </a>
-        <CTAButton size="sm" className="hidden sm:inline-flex">
-          Complete Pre-Call Form
-        </CTAButton>
         <a
           href={CTA_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="sm:hidden inline-flex items-center justify-center rounded-full bg-brand px-4 py-2 text-xs font-semibold text-white whitespace-nowrap"
-          style={{ boxShadow: "0 4px 14px -4px #E16A3D" }}
+          className="cta-shine glow-cta inline-flex items-center justify-center rounded-full bg-[#E16A3D] px-4 py-2 text-xs font-semibold text-white whitespace-nowrap sm:px-5 sm:py-2.5 sm:text-sm"
         >
           Pre-Call Form
         </a>
@@ -157,6 +157,8 @@ function Header() {
 }
 
 /* --------------------------------- Hero ---------------------------------- */
+
+const HERO_EASE = [0.22, 1, 0.36, 1] as const;
 
 const HeroReveal = ({
   children,
@@ -168,9 +170,9 @@ const HeroReveal = ({
   className?: string;
 }) => (
   <motion.div
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ duration: 0.5, delay, ease: "easeOut" }}
+    initial={{ opacity: 0, scale: 0.99 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.6, delay, ease: HERO_EASE }}
     className={className}
   >
     {children}
@@ -180,30 +182,44 @@ const HeroReveal = ({
 function Hero() {
   return (
     <section className="relative overflow-hidden">
-      <div className="grid-bg absolute inset-0" />
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute top-12 left-[10%] h-2 w-2 rounded-full bg-accent opacity-60" />
+        <div className="absolute top-20 right-[15%] h-1.5 w-1.5 rounded-full bg-brand opacity-50" />
+        <div className="absolute top-32 left-[20%] h-1 w-1 rounded-full bg-accent opacity-40" />
+        <div className="absolute top-8 right-[25%] h-2.5 w-2.5 rounded-full bg-accent opacity-30" />
+        <div className="absolute top-28 right-[8%] h-1.5 w-1.5 rounded-full bg-brand opacity-45" />
+      </div>
+      <div className="grid-bg absolute inset-0 pointer-events-none" />
       <div
-        className="absolute inset-x-0 top-0 h-[600px]"
+        className="absolute inset-x-0 top-0 h-[600px] pointer-events-none"
         style={{
           background:
             "radial-gradient(ellipse at top, rgba(0,111,124,0.35), transparent 60%)",
         }}
       />
-      <div className="orb absolute left-1/2 top-10 h-[360px] w-[360px] -translate-x-1/2 pointer-events-none" />
+      <motion.div
+        className="orb absolute left-1/2 top-10 h-[360px] w-[360px] -translate-x-1/2 pointer-events-none"
+        animate={{ y: [0, -15, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      />
 
       <div className="relative mx-auto max-w-[1280px] px-5 pt-4 mt-2 sm:px-8 sm:pb-36 md:mt-6">
         <div className="mx-auto max-w-3xl text-center">
-          <HeroReveal>
-            <Eyebrow>Your Audit is Confirmed</Eyebrow>
+          <HeroReveal delay={0}>
+            <p className="mb-6 text-base font-bold uppercase tracking-[0.22em] text-brand sm:text-lg">
+              Congratulations
+            </p>
           </HeroReveal>
-          <HeroReveal delay={0.05}>
-            <h1 className="text-balance text-5xl font-bold leading-[1.02] sm:text-6xl md:text-7xl lg:text-8xl">
-              Your Google Ads Audit is{" "}
+          <HeroReveal delay={0.1}>
+            <h1 className="text-balance text-5xl font-extrabold leading-[1.02] tracking-tight sm:text-6xl md:text-7xl lg:text-8xl">
+              Your Google Ads Audit
+              <br />
               <span className="bg-gradient-to-br from-accent to-[#00B5C7] bg-clip-text text-transparent">
-                Locked In.
+                is Locked In.
               </span>
             </h1>
           </HeroReveal>
-          <HeroReveal delay={0.15}>
+          <HeroReveal delay={0.2}>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-[#8BAFC0] sm:text-xl">
               Before the call, take 90 seconds to read what's below. It will
               make our conversation significantly more valuable for you and
@@ -211,7 +227,24 @@ function Hero() {
               service businesses in your market.
             </p>
           </HeroReveal>
-          <HeroReveal delay={0.25}>
+          <HeroReveal delay={0.3}>
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              {[
+                "Personalized to your market",
+                "No pitch. No pressure.",
+                "Specific findings about your business",
+              ].map((badge) => (
+                <span
+                  key={badge}
+                  className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-2 text-sm text-[#8BAFC0]"
+                >
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                  {badge}
+                </span>
+              ))}
+            </div>
+          </HeroReveal>
+          <HeroReveal delay={0.4}>
             <div className="mt-10 flex justify-center">
               <CTAButton>Complete Pre-Call Form</CTAButton>
             </div>
@@ -244,16 +277,33 @@ function FOMO() {
   return (
     <section
       className="relative border-t"
-      style={{ borderColor: "rgba(255,255,255,0.05)", backgroundColor: "#021820" }}
+      style={{
+        borderColor: "rgba(255,255,255,0.05)",
+        backgroundColor: "oklch(0.23 0.04 260)",
+      }}
     >
-      <div className="mx-auto max-w-[1280px] px-5 py-24 sm:px-8 sm:py-32">
-        <div className="mx-auto max-w-3xl text-center">
+      <motion.div
+        className="pointer-events-none absolute left-[15%] top-40 h-72 w-72 rounded-full blur-3xl"
+        style={{ background: "rgba(0,111,124,0.18)" }}
+        animate={{ y: [0, -15, 0] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <div className="relative mx-auto max-w-[1280px] px-5 py-24 sm:px-8 sm:py-32">
+        <div className="relative mx-auto max-w-4xl text-center">
+          <motion.div
+            className="pointer-events-none absolute left-1/2 -top-20 h-80 w-80 -translate-x-1/2 rounded-full blur-3xl"
+            style={{ background: "rgba(0,111,124,0.18)" }}
+            animate={{ y: [0, -15, 0] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          />
           <Reveal><Eyebrow>While You Read This</Eyebrow></Reveal>
           <Reveal delay={0.05}>
-            <SectionHeading>
+            <h2 className="text-balance text-5xl font-extrabold leading-[1.02] tracking-tight sm:text-6xl md:text-7xl lg:text-[88px]">
               Your Competitors Are Buying the Top Spots on Google{" "}
-              <span className="bg-gradient-to-br from-accent to-[#00B5C7] bg-clip-text text-transparent">Right Now.</span>
-            </SectionHeading>
+              <span className="bg-gradient-to-br from-accent to-[#00B5C7] bg-clip-text text-transparent">
+                Right Now.
+              </span>
+            </h2>
           </Reveal>
           <Reveal delay={0.15}>
             <p className="mt-6 text-lg leading-relaxed text-[#8BAFC0]">
@@ -271,11 +321,8 @@ function FOMO() {
           <p className="mb-3 text-center text-sm text-[#8BAFC0]">
             What your customers see right now when they search for your service.
           </p>
-          <div
-            className="mx-auto max-w-3xl overflow-hidden rounded-2xl border bg-[#032435]"
-            style={{ borderColor: "#0A3A52" }}
-          >
-            <div className="flex items-center gap-2 border-b border-[#0A3A52] bg-[#021820] px-4 py-3">
+          <div className="mx-auto max-w-3xl overflow-hidden rounded-2xl border border-white/10 bg-card">
+            <div className="flex items-center gap-2 border-b border-white/10 bg-background/60 px-4 py-3">
               <Search className="h-4 w-4 text-[#8BAFC0]" />
               <span className="text-sm text-[#8BAFC0]">
                 emergency plumber near me
@@ -293,7 +340,7 @@ function FOMO() {
                   <p className="text-sm text-[#8BAFC0]">{ad.url}</p>
                 </div>
               ))}
-              <div className="space-y-4 border-t border-[#0A3A52] pt-5 opacity-30 blur-[2px]">
+              <div className="space-y-4 border-t border-white/10 pt-5 opacity-30 blur-[2px]">
                 {[1, 2, 3].map((i) => (
                   <div key={i}>
                     <div className="mb-2 h-3 w-1/2 rounded bg-white/40" />
@@ -303,6 +350,9 @@ function FOMO() {
               </div>
             </div>
           </div>
+          <p className="mt-3 text-center text-xs uppercase tracking-[0.15em] text-[#8BAFC0] opacity-50">
+            Illustrative example only
+          </p>
         </Reveal>
 
         <Reveal delay={0.3} className="mt-12 text-center">
@@ -371,8 +421,7 @@ function WhatHappens() {
               <motion.div
                 whileHover={CARD_HOVER}
                 whileTap={TAP}
-                className="group h-full rounded-2xl border bg-[#032435] p-8 transition-shadow duration-300 hover:border-accent/40 hover:shadow-[0_20px_60px_-20px_rgba(0,111,124,0.5)] active:border-accent/40 active:shadow-[0_20px_60px_-20px_rgba(0,111,124,0.5)]"
-                style={{ borderColor: "#0A3A52" }}
+                className="group h-full rounded-2xl border border-white/10 bg-card p-8 transition-shadow duration-300 hover:border-accent/40 hover:shadow-[0_20px_60px_-20px_rgba(0,111,124,0.5)] active:border-accent/40 active:shadow-[0_20px_60px_-20px_rgba(0,111,124,0.5)]"
               >
                 <span className="inline-block text-6xl font-bold text-accent transition-all duration-500 drop-shadow-[0_0_8px_rgba(0,111,124,0.25)] group-hover:scale-[1.35] group-hover:brightness-150 group-hover:drop-shadow-[0_0_24px_rgba(0,181,199,0.95)] group-active:scale-[1.35] group-active:brightness-150 group-active:drop-shadow-[0_0_24px_rgba(0,181,199,0.95)]">
                   {c.n}
@@ -411,9 +460,13 @@ function ProofBar() {
   ];
   const doubled = [...items, ...items];
   return (
-    <section
+    <motion.section
       className="relative overflow-hidden"
       style={{ backgroundColor: "#006F7C" }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
     >
       <div
         className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24"
@@ -439,7 +492,7 @@ function ProofBar() {
           </div>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 }
 
@@ -522,7 +575,7 @@ function Results() {
   return (
     <section
       className="border-t"
-      style={{ borderColor: "rgba(255,255,255,0.05)", backgroundColor: "#021820" }}
+      style={{ borderColor: "rgba(255,255,255,0.05)" }}
     >
       <div className="mx-auto max-w-[1280px] px-5 py-24 sm:px-8 sm:py-32">
         <div className="mx-auto max-w-3xl text-center">
@@ -546,8 +599,7 @@ function Results() {
               <motion.div
                 whileHover={CARD_HOVER}
                 whileTap={TAP}
-                className="h-full rounded-2xl border bg-[#032435] p-8 transition-shadow duration-300 hover:border-accent/40 hover:shadow-[0_20px_60px_-20px_rgba(0,111,124,0.5)]"
-                style={{ borderColor: "#0A3A52" }}
+                className="h-full rounded-2xl border border-white/10 bg-card p-8 transition-shadow duration-300 hover:border-accent/40 hover:shadow-[0_20px_60px_-20px_rgba(0,111,124,0.5)]"
               >
                 <div className="flex items-center justify-between gap-4">
                   <div className="min-w-0">
@@ -574,10 +626,10 @@ function Results() {
                   </div>
                 </div>
                 <div className="mt-6 flex flex-wrap gap-2">
-                  <span className="rounded-full border border-[#0A3A52] bg-[#021820] px-3 py-1 text-xs text-white">
+                  <span className="rounded-full border border-white/10 bg-background/60 px-3 py-1 text-xs text-white">
                     {c.calls}
                   </span>
-                  <span className="rounded-full border border-[#0A3A52] bg-[#021820] px-3 py-1 text-xs text-white">
+                  <span className="rounded-full border border-white/10 bg-background/60 px-3 py-1 text-xs text-white">
                     {c.spend}
                   </span>
                 </div>
@@ -591,9 +643,8 @@ function Results() {
 
         <Reveal delay={0.2} className="mt-14">
           <div
-            className="rounded-2xl border p-10 text-center"
+            className="rounded-2xl border border-white/10 p-10 text-center"
             style={{
-              borderColor: "#0A3A52",
               background:
                 "linear-gradient(135deg, #006F7C 0%, #021820 100%)",
             }}
@@ -615,7 +666,7 @@ function Results() {
 
 /* -------------------------------- System --------------------------------- */
 
-function System() {
+function TheSystem() {
   const items = [
     {
       icon: Wrench,
@@ -670,8 +721,7 @@ function System() {
               <motion.div
                 whileHover={CARD_HOVER}
                 whileTap={TAP}
-                className="h-full rounded-2xl border bg-[#032435] p-6 transition-shadow duration-300 hover:border-accent/40 hover:shadow-[0_20px_60px_-20px_rgba(0,111,124,0.5)]"
-                style={{ borderColor: "#0A3A52" }}
+                className="h-full rounded-2xl border border-white/10 bg-card p-6 transition-shadow duration-300 hover:border-accent/40 hover:shadow-[0_20px_60px_-20px_rgba(0,111,124,0.5)]"
               >
                 <div className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-accent/15 text-accent">
                   <it.icon className="h-5 w-5" />
@@ -723,7 +773,10 @@ function Testimonials() {
   return (
     <section
       className="border-t"
-      style={{ borderColor: "rgba(255,255,255,0.05)", backgroundColor: "#021820" }}
+      style={{
+        borderColor: "rgba(255,255,255,0.05)",
+        backgroundColor: "oklch(0.23 0.04 260)",
+      }}
     >
       <div className="mx-auto max-w-[1280px] px-5 py-24 sm:px-8 sm:py-32">
         <div className="mx-auto max-w-3xl text-center">
@@ -735,33 +788,37 @@ function Testimonials() {
           </Reveal>
         </div>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
+        <div className="mx-auto mt-14 flex max-w-4xl flex-col gap-6">
           {ts.map((t, i) => (
             <Reveal key={t.name} delay={i * 0.08}>
               <motion.div
                 whileHover={CARD_HOVER}
                 whileTap={TAP}
-                className="h-full rounded-2xl border bg-[#032435] p-8 transition-shadow duration-300 hover:border-accent/40 hover:shadow-[0_20px_60px_-20px_rgba(0,111,124,0.5)]"
-                style={{ borderColor: "#0A3A52", borderLeft: "3px solid #006F7C" }}
+                className="relative overflow-hidden rounded-3xl border border-l-4 border-white/10 border-l-accent bg-card p-10 transition-shadow duration-300 hover:border-accent/40 hover:shadow-[0_20px_60px_-20px_rgba(0,111,124,0.5)]"
               >
-                <div className="flex gap-1">
-                  {[0, 1, 2, 3, 4].map((s) => (
-                    <Star key={s} className="h-4 w-4 fill-accent text-accent" />
-                  ))}
-                </div>
-                <p className="mt-5 text-lg italic leading-relaxed text-white">
-                  "{t.q}"
-                </p>
-                <div className="mt-6 flex items-center gap-3">
-                  <img
-                    src={t.img}
-                    alt={t.name}
-                    className="h-12 w-12 rounded-full object-cover"
-                    loading="lazy"
-                  />
-                  <div>
-                    <p className="font-semibold text-white">{t.name}</p>
-                    <p className="text-sm text-[#8BAFC0]">{t.role}</p>
+                <span className="pointer-events-none absolute left-6 top-2 select-none text-8xl font-black leading-none text-accent opacity-20">
+                  &ldquo;
+                </span>
+                <div className="relative">
+                  <div className="flex gap-1">
+                    {[0, 1, 2, 3, 4].map((s) => (
+                      <Star key={s} className="h-4 w-4 fill-accent text-accent" />
+                    ))}
+                  </div>
+                  <p className="mt-5 text-xl italic leading-relaxed text-white">
+                    "{t.q}"
+                  </p>
+                  <div className="mt-8 flex items-center justify-end gap-3">
+                    <div className="text-right">
+                      <p className="font-semibold text-white">{t.name}</p>
+                      <p className="text-sm text-[#8BAFC0]">{t.role}</p>
+                    </div>
+                    <img
+                      src={t.img}
+                      alt={t.name}
+                      className="h-12 w-12 rounded-full object-cover"
+                      loading="lazy"
+                    />
                   </div>
                 </div>
               </motion.div>
@@ -791,8 +848,8 @@ function Guarantee() {
             whileHover={{ y: -6, scale: 1.005 }}
             whileTap={TAP}
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
-            className="group relative overflow-hidden rounded-3xl border transition-all duration-500 hover:border-brand/60 hover:shadow-[0_30px_90px_-20px_rgba(225,106,61,0.45)] active:border-brand/60"
-            style={{ borderColor: "#0A3A52", background: "linear-gradient(135deg, #006F7C 0%, #021820 100%)" }}
+            className="group relative overflow-hidden rounded-3xl border border-white/10 transition-all duration-500 hover:border-brand/60 hover:shadow-[0_30px_90px_-20px_rgba(225,106,61,0.45)] active:border-brand/60"
+            style={{ background: "linear-gradient(135deg, #006F7C 0%, #021820 100%)" }}
           >
             <div className="relative p-8 sm:p-12">
               <div className="orb pointer-events-none absolute -left-32 -top-20 h-[360px] w-[360px]" />
@@ -900,12 +957,12 @@ function Scarcity() {
             whileHover={{ y: -4, scale: 1.01 }}
             whileTap={TAP}
             transition={{ type: "spring", stiffness: 280, damping: 22 }}
-            className="group relative overflow-hidden rounded-2xl border transition-all duration-500 hover:border-brand/60 hover:shadow-[0_20px_60px_-10px_rgba(225,106,61,0.4)] active:border-brand/60 bg-[#032435] p-8 text-center"
+            className="group relative overflow-hidden rounded-2xl border transition-all duration-500 hover:border-brand/60 hover:shadow-[0_20px_60px_-10px_rgba(225,106,61,0.4)] active:border-brand/60 bg-card p-8 text-center"
             style={{ borderColor: "rgba(225,106,61,0.35)" }}
           >
             <p className="text-lg text-white">
               If you are reading this,{" "}
-              <span className="font-bold text-[#006F7C]">
+              <span className="bg-gradient-to-br from-accent to-[#00B5C7] bg-clip-text text-transparent font-bold">
                 your market has not been claimed yet.
               </span>{" "}
               But other businesses in your area are actively looking for
@@ -984,7 +1041,7 @@ function Footer() {
             aria-label="VizionBox home"
           >
             <img
-              src={logoAsset.url}
+              src={LOGO_SRC}
               alt="VizionBox"
               style={{ height: "112px", width: "auto", objectFit: "contain" }}
             />
@@ -1057,10 +1114,12 @@ function ConfirmationPage() {
         <FOMO />
         <WhatHappens />
         <ProofBar />
-        <Testimonials />
+        <TheSystem />
+        <Results />
         <Guarantee />
         <Scarcity />
         <FinalCTA />
+        <Testimonials />
       </main>
       <Footer />
       <MobileStickyCTA visible={pastHero} />
