@@ -215,37 +215,34 @@ function Hero() {
           </HeroReveal>
           <HeroReveal delay={0.2}>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-[#8BAFC0] sm:text-xl">
-              Before the call, take 90 seconds to read what's below. It will
-              make our conversation significantly more valuable for you and
-              your business. Everything here was prepared specifically for home
-              service businesses in your market.
+              Before the call, take 90 seconds to read what's below and fill
+              out your pre-call form. The more we know about your business
+              before we speak, the more specific and valuable our conversation
+              will be.
             </p>
           </HeroReveal>
           <HeroReveal delay={0.3}>
-            <div className="mt-8 flex flex-wrap justify-center gap-3">
-              {[
-                "Personalized to your market",
-                "No pitch. No pressure.",
-                "Specific findings about your business",
-              ].map((badge) => (
-                <span
-                  key={badge}
-                  className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-2 text-sm text-[#8BAFC0]"
-                >
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                  {badge}
-                </span>
-              ))}
+            <div className="mx-auto mt-8 flex max-w-2xl items-center justify-center gap-3">
+              <span className="h-2 w-2 shrink-0 rounded-full bg-accent shadow-[0_0_12px_rgba(0,181,199,0.8)]" />
+              <span className="h-px w-8 shrink-0 bg-accent/60" />
+              <p className="text-balance text-xl font-bold leading-snug text-white sm:text-2xl">
+                The call you just booked is the first step to scaling your
+                business
+              </p>
             </div>
           </HeroReveal>
           <HeroReveal delay={0.4}>
-            <div className="mt-10 flex justify-center">
+            <div className="mt-10 flex justify-center pb-4 sm:pb-8">
               <CTAButton>Complete Pre-Call Form</CTAButton>
             </div>
           </HeroReveal>
         </div>
       </div>
-      <div id="hero-sentinel" aria-hidden="true" />
+      <div
+        id="hero-sentinel"
+        aria-hidden="true"
+        className="absolute bottom-0 left-0 h-px w-full"
+      />
     </section>
   );
 }
