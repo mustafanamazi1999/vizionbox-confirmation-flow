@@ -1,17 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion, useInView, useMotionValue, useTransform, animate } from "motion/react";
-import { useEffect, useRef } from "react";
+import { motion } from "motion/react";
 import {
   ArrowRight,
   Check,
   ShieldCheck,
   Star,
   Search,
-  Phone,
-  BarChart3,
-  FileText,
-  Wrench,
-  Layout,
 } from "lucide-react";
 import { usePastHero } from "@/hooks/use-past-hero";
 
