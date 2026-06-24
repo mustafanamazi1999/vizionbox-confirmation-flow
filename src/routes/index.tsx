@@ -289,7 +289,7 @@ function FOMO() {
           />
           <Reveal><Eyebrow>While You Read This</Eyebrow></Reveal>
           <Reveal delay={0.05}>
-            <h2 className="text-balance text-5xl font-extrabold leading-[1.02] tracking-tight sm:text-6xl md:text-7xl lg:text-[88px]">
+            <h2 className="text-balance text-[2.7rem] font-extrabold leading-[1.02] tracking-tight sm:text-[3.375rem] md:text-[3.9rem] lg:text-[79px]">
               Your Competitors Are Buying the Top Spots on Google{" "}
               <span className="bg-gradient-to-br from-accent to-[#00B5C7] bg-clip-text text-transparent">
                 Right Now.
