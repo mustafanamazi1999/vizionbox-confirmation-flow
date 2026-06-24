@@ -1,17 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion, useInView, useMotionValue, useTransform, animate } from "motion/react";
-import { useEffect, useRef } from "react";
+import { motion } from "motion/react";
 import {
   ArrowRight,
-  Check,
   ShieldCheck,
   Star,
   Search,
-  Phone,
-  BarChart3,
-  FileText,
-  Wrench,
-  Layout,
 } from "lucide-react";
 import { usePastHero } from "@/hooks/use-past-hero";
 
@@ -221,37 +214,34 @@ function Hero() {
           </HeroReveal>
           <HeroReveal delay={0.2}>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-[#8BAFC0] sm:text-xl">
-              Before the call, take 90 seconds to read what's below. It will
-              make our conversation significantly more valuable for you and
-              your business. Everything here was prepared specifically for home
-              service businesses in your market.
+              Before the call, take 90 seconds to read what's below and fill
+              out your pre-call form. The more we know about your business
+              before we speak, the more specific and valuable our conversation
+              will be.
             </p>
           </HeroReveal>
           <HeroReveal delay={0.3}>
-            <div className="mt-8 flex flex-wrap justify-center gap-3">
-              {[
-                "Personalized to your market",
-                "No pitch. No pressure.",
-                "Specific findings about your business",
-              ].map((badge) => (
-                <span
-                  key={badge}
-                  className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-2 text-sm text-[#8BAFC0]"
-                >
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                  {badge}
-                </span>
-              ))}
+            <div className="mx-auto mt-8 flex max-w-2xl items-center justify-center gap-3">
+              <span className="h-2 w-2 shrink-0 rounded-full bg-accent shadow-[0_0_12px_rgba(0,181,199,0.8)]" />
+              <span className="h-px w-8 shrink-0 bg-accent/60" />
+              <p className="text-balance text-xl font-bold leading-snug text-white sm:text-2xl">
+                The call you just booked is the first step to scaling your
+                business
+              </p>
             </div>
           </HeroReveal>
           <HeroReveal delay={0.4}>
-            <div className="mt-10 flex justify-center">
+            <div className="mt-10 flex justify-center pb-4 sm:pb-8">
               <CTAButton>Complete Pre-Call Form</CTAButton>
             </div>
           </HeroReveal>
         </div>
       </div>
-      <div id="hero-sentinel" aria-hidden="true" />
+      <div
+        id="hero-sentinel"
+        aria-hidden="true"
+        className="absolute bottom-0 left-0 h-px w-full"
+      />
     </section>
   );
 }
@@ -298,7 +288,7 @@ function FOMO() {
           />
           <Reveal><Eyebrow>While You Read This</Eyebrow></Reveal>
           <Reveal delay={0.05}>
-            <h2 className="text-balance text-5xl font-extrabold leading-[1.02] tracking-tight sm:text-6xl md:text-7xl lg:text-[88px]">
+            <h2 className="text-balance text-[2.7rem] font-extrabold leading-[1.02] tracking-tight sm:text-[3.375rem] md:text-[3.9rem] lg:text-[79px]">
               Your Competitors Are Buying the Top Spots on Google{" "}
               <span className="bg-gradient-to-br from-accent to-[#00B5C7] bg-clip-text text-transparent">
                 Right Now.
@@ -318,7 +308,7 @@ function FOMO() {
         </div>
 
         <Reveal delay={0.2} className="mt-12">
-          <p className="mb-3 text-center text-sm text-[#8BAFC0]">
+          <p className="mb-3 text-center text-sm font-semibold text-[#E16A3D]">
             What your customers see right now when they search for your service.
           </p>
           <div className="mx-auto max-w-3xl overflow-hidden rounded-2xl border border-white/10 bg-card">
@@ -350,21 +340,26 @@ function FOMO() {
               </div>
             </div>
           </div>
-          <p className="mt-3 text-center text-xs uppercase tracking-[0.15em] text-[#8BAFC0] opacity-50">
+          <p className="mt-3 text-center text-xs font-semibold uppercase tracking-[0.15em] text-[#E16A3D]">
             Illustrative example only
           </p>
         </Reveal>
 
-        <Reveal delay={0.3} className="mt-12 text-center">
-          <p className="text-xl font-bold text-white sm:text-2xl">
-            That is not a small problem. Every day without a properly built
-            campaign is real revenue going to your competitors, compounding
-            every single week.
-          </p>
-          <p className="mt-4 text-base text-[#8BAFC0]">
-            The call you just booked is the first step to changing that. Here
-            is what to expect.
-          </p>
+        <Reveal delay={0.3} className="mt-12">
+          <div
+            className="mx-auto max-w-3xl rounded-2xl border-l-4 border-accent bg-[rgba(0,111,124,0.08)] p-6 shadow-[-6px_0_24px_-6px_rgba(0,181,199,0.5)] sm:p-8"
+            style={{ borderColor: "#00B5C7" }}
+          >
+            <p className="text-xl font-bold leading-relaxed text-white sm:text-2xl">
+              That is not a small problem. Every day without a properly built
+              campaign is real revenue going to your competitors, compounding
+              every single week.
+            </p>
+            <p className="mt-4 text-base leading-relaxed text-white">
+              The call you just booked is the first step to changing that.
+              Here is what to expect.
+            </p>
+          </div>
         </Reveal>
       </div>
     </section>
@@ -436,12 +431,6 @@ function WhatHappens() {
             </Reveal>
           ))}
         </div>
-        <Reveal delay={0.3} className="mt-10 text-center">
-          <p className="mx-auto max-w-2xl text-base text-[#8BAFC0]">
-            No generic advice. No recycled templates. Thirty minutes of
-            specific, prepared findings about your business and your market.
-          </p>
-        </Reveal>
       </div>
     </section>
   );
@@ -496,258 +485,6 @@ function ProofBar() {
   );
 }
 
-/* -------------------------------- Results -------------------------------- */
-
-function AnimatedCPL({ from, to }: { from: number; to: number }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-  const mv = useMotionValue(from);
-  const rounded = useTransform(mv, (v) => `$${Math.round(v)}`);
-
-  useEffect(() => {
-    if (inView) {
-      const controls = animate(mv, to, {
-        duration: 1.8,
-        ease: [0.22, 1, 0.36, 1],
-      });
-      return () => controls.stop();
-    }
-  }, [inView, mv, to]);
-
-  return (
-    <motion.span
-      ref={ref}
-      className="text-6xl font-bold text-brand sm:text-7xl"
-    >
-      {rounded}
-    </motion.span>
-  );
-}
-
-function Results() {
-  const cards = [
-    {
-      emoji: "🚗",
-      title: "Garage Door Repair",
-      loc: "Denver, CO",
-      before: 94,
-      after: 27,
-      calls: "48 qualified calls month one",
-      spend: "$1,000/month ad spend",
-      quote:
-        "I used to pay $94 per lead and had no idea if they were even qualified. Now every call costs me $27 and I can see exactly where it came from.",
-    },
-    {
-      emoji: "🏗️",
-      title: "Foundation Repair",
-      loc: "Atlanta, GA",
-      before: 180,
-      after: 52,
-      calls: "29 qualified calls month one",
-      spend: "$2,000/month ad spend",
-      quote:
-        "High-ticket jobs, real buyers, and a dashboard that shows me every single lead. We recouped the entire investment in week two.",
-    },
-    {
-      emoji: "🧪",
-      title: "Mold Remediation",
-      loc: "Seattle, WA",
-      before: 140,
-      after: 38,
-      calls: "34 qualified calls in 30 days",
-      spend: "$1,500/month ad spend",
-      quote:
-        "Our cost per lead was $140 with our last agency. VizionBox got us to $38 in six weeks. I finally feel like I understand where every dollar goes.",
-    },
-    {
-      emoji: "🐛",
-      title: "Pest Control",
-      loc: "Houston, TX",
-      before: null,
-      after: 23,
-      calls: "41 qualified calls month one",
-      spend: "$1,000/month ad spend",
-      quote:
-        "We had no idea what was working before. Now I have a live dashboard I check every morning. Phone has not stopped ringing.",
-    },
-  ];
-
-  return (
-    <section
-      className="border-t"
-      style={{ borderColor: "rgba(255,255,255,0.05)" }}
-    >
-      <div className="mx-auto max-w-[1280px] px-5 py-24 sm:px-8 sm:py-32">
-        <div className="mx-auto max-w-3xl text-center">
-          <Reveal><Eyebrow>Client Results</Eyebrow></Reveal>
-          <Reveal delay={0.05}>
-            <SectionHeading>
-              What Happens When the System is Built Right.
-            </SectionHeading>
-          </Reveal>
-          <Reveal delay={0.15}>
-            <p className="mt-6 text-lg leading-relaxed text-[#8BAFC0]">
-              These are home service businesses that were in the exact same
-              position you are in right now. Here is what changed.
-            </p>
-          </Reveal>
-        </div>
-
-        <div className="mt-14 grid gap-6 md:grid-cols-2">
-          {cards.map((c, i) => (
-            <Reveal key={c.title} delay={i * 0.08}>
-              <motion.div
-                whileHover={CARD_HOVER}
-                whileTap={TAP}
-                className="h-full rounded-2xl border border-white/10 bg-card p-8 transition-shadow duration-300 hover:border-accent/40 hover:shadow-[0_20px_60px_-20px_rgba(0,111,124,0.5)]"
-              >
-                <div className="flex items-center justify-between gap-4">
-                  <div className="min-w-0">
-                    <div className="text-3xl">{c.emoji}</div>
-                    <h3 className="mt-2 text-2xl font-bold text-white">
-                      {c.title}
-                    </h3>
-                    <p className="text-sm text-[#8BAFC0]">{c.loc}</p>
-                  </div>
-                  <div className="text-right">
-                    {c.before !== null ? (
-                      <p className="text-base text-[#8BAFC0] line-through">
-                        ${c.before} CPL
-                      </p>
-                    ) : (
-                      <p className="text-xs italic text-[#8BAFC0]">
-                        Zero tracking,<br />flying blind
-                      </p>
-                    )}
-                    <AnimatedCPL from={c.before ?? c.after * 4} to={c.after} />
-                    <p className="text-xs uppercase tracking-wider text-[#8BAFC0]">
-                      Cost Per Lead
-                    </p>
-                  </div>
-                </div>
-                <div className="mt-6 flex flex-wrap gap-2">
-                  <span className="rounded-full border border-white/10 bg-background/60 px-3 py-1 text-xs text-white">
-                    {c.calls}
-                  </span>
-                  <span className="rounded-full border border-white/10 bg-background/60 px-3 py-1 text-xs text-white">
-                    {c.spend}
-                  </span>
-                </div>
-                <p className="mt-5 border-l-2 border-accent pl-4 text-base italic text-white">
-                  "{c.quote}"
-                </p>
-              </motion.div>
-            </Reveal>
-          ))}
-        </div>
-
-        <Reveal delay={0.2} className="mt-14">
-          <div
-            className="rounded-2xl border border-white/10 p-10 text-center"
-            style={{
-              background:
-                "linear-gradient(135deg, #006F7C 0%, #021820 100%)",
-            }}
-          >
-            <h3 className="text-3xl font-bold text-white sm:text-5xl">
-              <span className="text-brand">$34</span> Average Cost Per
-              Lead Across All Active Campaigns
-            </h3>
-            <p className="mt-3 text-base text-white/80">
-              Tracked, attributed, and visible in every client's live dashboard
-              every single day.
-            </p>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-/* -------------------------------- System --------------------------------- */
-
-function TheSystem() {
-  const items = [
-    {
-      icon: Wrench,
-      t: "Full Google Ads Campaign",
-      d: "Built from scratch with the right keywords, structure, and targeting for your specific city and service. No generic templates.",
-    },
-    {
-      icon: Layout,
-      t: "Dedicated Landing Page",
-      d: "A conversion-focused page built specifically for your campaign, designed to turn ad clicks into phone calls, not your homepage.",
-    },
-    {
-      icon: Phone,
-      t: "CallRail Call Tracking",
-      d: "Every inbound call recorded, attributed to the exact keyword and ad that generated it, and visible in your dashboard in real time.",
-    },
-    {
-      icon: BarChart3,
-      t: "Live Reporting Dashboard",
-      d: "A Looker Studio dashboard you can check from any device at any time. Calls, cost per lead, ad spend, and performance trends all in one place.",
-    },
-    {
-      icon: FileText,
-      t: "Weekly Performance Report",
-      d: "Every Monday a performance summary lands in your inbox. Calls generated, cost per lead, what was optimized, and what is being tested next.",
-    },
-    {
-      icon: Check,
-      t: "Weekly Optimization",
-      d: "Every Wednesday your campaign is reviewed and optimized. Negative keywords, bid adjustments, ad testing, and performance improvements. Every single week without you asking.",
-    },
-  ];
-  return (
-    <section className="border-t" style={{ borderColor: "rgba(255,255,255,0.05)" }}>
-      <div className="mx-auto max-w-[1280px] px-5 py-24 sm:px-8 sm:py-32">
-        <div className="mx-auto max-w-3xl text-center">
-          <Reveal><Eyebrow>The System</Eyebrow></Reveal>
-          <Reveal delay={0.05}>
-            <SectionHeading>Everything Built. Nothing Left to You.</SectionHeading>
-          </Reveal>
-          <Reveal delay={0.15}>
-            <p className="mt-6 text-lg leading-relaxed text-[#8BAFC0]">
-              When a client signs with VizionBox, here is exactly what gets
-              built and managed for them from day one.
-            </p>
-          </Reveal>
-        </div>
-
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((it, i) => (
-            <Reveal key={it.t} delay={i * 0.08}>
-              <motion.div
-                whileHover={CARD_HOVER}
-                whileTap={TAP}
-                className="h-full rounded-2xl border border-white/10 bg-card p-6 transition-shadow duration-300 hover:border-accent/40 hover:shadow-[0_20px_60px_-20px_rgba(0,111,124,0.5)]"
-              >
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-accent/15 text-accent">
-                  <it.icon className="h-5 w-5" />
-                </div>
-                <h3 className="mt-4 text-xl font-bold text-white">{it.t}</h3>
-                <p className="mt-2 text-base leading-relaxed text-[#8BAFC0]">
-                  {it.d}
-                </p>
-              </motion.div>
-            </Reveal>
-          ))}
-        </div>
-
-        <Reveal delay={0.2} className="mt-12 text-center">
-          <p className="mx-auto max-w-3xl text-xl font-bold text-white sm:text-2xl">
-            You fill out one form. We build everything. You go live in 3 to 5
-            business days. Your only job is answering the phone and closing the
-            jobs.
-          </p>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-/* ----------------------------- Testimonials ------------------------------ */
 
 function Testimonials() {
   const ts = [
@@ -863,26 +600,12 @@ function Guarantee() {
                 </div>
                 <p className="mt-6 text-lg leading-relaxed text-white sm:text-xl">
                   If your campaign is not generating a positive return on ad
-                  spend within the first 30 days, meaning you are making more
+                  spend within the first 30 days, meaning you are making less
                   from closed jobs than you are spending on ads,{" "}
                   <span className="font-bold text-brand">
-                    month 2 is completely free.
-                  </span>{" "}
-                  No asterisks. No conditions. No awkward conversations. We put
-                  this in writing in every client agreement before a single
-                  dollar is spent on advertising.
+                    month 2 is completely FREE.
+                  </span>
                 </p>
-                <ul className="mt-6 grid gap-3 text-left sm:grid-cols-2">
-                  {[
-                    "Minimum $1,000 monthly ad spend directly with Google required to qualify",
-                    "Guarantee terms defined clearly in writing before signing",
-                  ].map((b) => (
-                    <li key={b} className="flex items-start gap-3 text-white">
-                      <Check className="mt-1 h-5 w-5 shrink-0 text-accent" />
-                      <span className="text-base">{b}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
             </div>
           </motion.div>
@@ -1114,8 +837,6 @@ function ConfirmationPage() {
         <FOMO />
         <WhatHappens />
         <ProofBar />
-        <TheSystem />
-        <Results />
         <Guarantee />
         <Scarcity />
         <FinalCTA />
