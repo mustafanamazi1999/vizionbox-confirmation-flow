@@ -341,21 +341,26 @@ function FOMO() {
               </div>
             </div>
           </div>
-          <p className="mt-3 text-center text-xs uppercase tracking-[0.15em] text-[#8BAFC0] opacity-50">
+          <p className="mt-3 text-center text-xs font-semibold uppercase tracking-[0.15em] text-[#E16A3D]">
             Illustrative example only
           </p>
         </Reveal>
 
-        <Reveal delay={0.3} className="mt-12 text-center">
-          <p className="text-xl font-bold text-white sm:text-2xl">
-            That is not a small problem. Every day without a properly built
-            campaign is real revenue going to your competitors, compounding
-            every single week.
-          </p>
-          <p className="mt-4 text-base text-[#8BAFC0]">
-            The call you just booked is the first step to changing that. Here
-            is what to expect.
-          </p>
+        <Reveal delay={0.3} className="mt-12">
+          <div
+            className="mx-auto max-w-3xl rounded-2xl border-l-4 border-accent bg-[rgba(0,111,124,0.08)] p-6 shadow-[-6px_0_24px_-6px_rgba(0,181,199,0.5)] sm:p-8"
+            style={{ borderColor: "#00B5C7" }}
+          >
+            <p className="text-xl font-bold leading-relaxed text-white sm:text-2xl">
+              That is not a small problem. Every day without a properly built
+              campaign is real revenue going to your competitors, compounding
+              every single week.
+            </p>
+            <p className="mt-4 text-base leading-relaxed text-white">
+              The call you just booked is the first step to changing that.
+              Here is what to expect.
+            </p>
+          </div>
         </Reveal>
       </div>
     </section>
