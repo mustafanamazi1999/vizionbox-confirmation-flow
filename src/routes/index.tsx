@@ -220,16 +220,14 @@ function Hero() {
               will be.
             </p>
           </HeroReveal>
-          <HeroReveal delay={0.3}>
-            <div className="mx-auto mt-8 flex max-w-2xl items-center justify-center gap-3">
-              <span className="h-2 w-2 shrink-0 rounded-full bg-accent shadow-[0_0_12px_rgba(0,181,199,0.8)]" />
-              <span className="h-px w-8 shrink-0 bg-accent/60" />
+          <Reveal delay={0.1} className="mt-40 sm:mt-56">
+            <div className="mx-auto max-w-2xl text-center">
               <p className="text-balance text-xl font-bold leading-snug text-white sm:text-2xl">
                 The call you just booked is the first step to scaling your
                 business
               </p>
             </div>
-          </HeroReveal>
+          </Reveal>
           <HeroReveal delay={0.4}>
             <div className="mt-10 flex justify-center pb-4 sm:pb-8">
               <CTAButton>Complete Pre-Call Form</CTAButton>
@@ -405,7 +403,7 @@ function WhatHappens() {
               Before we speak, we review your current online presence, pull up
               your competitors' active Google Ads, and identify the specific
               gaps that are costing you leads in your market. You get specific
-              findings about your business. Not a pitch. Not a template.
+              findings about your business.
             </p>
           </Reveal>
         </div>
@@ -642,10 +640,11 @@ function Guarantee() {
 function Scarcity() {
   return (
     <section
-      className="border-t"
+      className="relative overflow-hidden border-t"
       style={{ borderColor: "rgba(255,255,255,0.05)", backgroundColor: "#021820" }}
     >
-      <div className="mx-auto max-w-[1280px] px-5 py-24 sm:px-8 sm:py-32">
+      <div className="grid-bg pointer-events-none absolute inset-0 opacity-60" />
+      <div className="relative mx-auto max-w-[1280px] px-5 py-24 sm:px-8 sm:py-32">
         <div className="mx-auto max-w-3xl text-center">
           <Reveal>
             <span
