@@ -432,12 +432,6 @@ function WhatHappens() {
             </Reveal>
           ))}
         </div>
-        <Reveal delay={0.3} className="mt-10 text-center">
-          <p className="mx-auto max-w-2xl text-base text-[#8BAFC0]">
-            No generic advice. No recycled templates. Thirty minutes of
-            specific, prepared findings about your business and your market.
-          </p>
-        </Reveal>
       </div>
     </section>
   );
