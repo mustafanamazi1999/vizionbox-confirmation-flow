@@ -309,7 +309,7 @@ function FOMO() {
         </div>
 
         <Reveal delay={0.2} className="mt-12">
-          <p className="mb-3 text-center text-sm text-[#8BAFC0]">
+          <p className="mb-3 text-center text-sm font-semibold text-[#E16A3D]">
             What your customers see right now when they search for your service.
           </p>
           <div className="mx-auto max-w-3xl overflow-hidden rounded-2xl border border-white/10 bg-card">
