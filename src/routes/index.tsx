@@ -838,8 +838,6 @@ function ConfirmationPage() {
         <FOMO />
         <WhatHappens />
         <ProofBar />
-        <TheSystem />
-        <Results />
         <Guarantee />
         <Scarcity />
         <FinalCTA />
