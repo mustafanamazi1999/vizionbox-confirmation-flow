@@ -403,7 +403,7 @@ function WhatHappens() {
               Before we speak, we review your current online presence, pull up
               your competitors' active Google Ads, and identify the specific
               gaps that are costing you leads in your market. You get specific
-              findings about your business. Not a pitch. Not a template.
+              findings about your business.
             </p>
           </Reveal>
         </div>
