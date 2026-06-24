@@ -601,26 +601,12 @@ function Guarantee() {
                 </div>
                 <p className="mt-6 text-lg leading-relaxed text-white sm:text-xl">
                   If your campaign is not generating a positive return on ad
-                  spend within the first 30 days, meaning you are making more
+                  spend within the first 30 days, meaning you are making less
                   from closed jobs than you are spending on ads,{" "}
                   <span className="font-bold text-brand">
-                    month 2 is completely free.
-                  </span>{" "}
-                  No asterisks. No conditions. No awkward conversations. We put
-                  this in writing in every client agreement before a single
-                  dollar is spent on advertising.
+                    month 2 is completely FREE.
+                  </span>
                 </p>
-                <ul className="mt-6 grid gap-3 text-left sm:grid-cols-2">
-                  {[
-                    "Minimum $1,000 monthly ad spend directly with Google required to qualify",
-                    "Guarantee terms defined clearly in writing before signing",
-                  ].map((b) => (
-                    <li key={b} className="flex items-start gap-3 text-white">
-                      <Check className="mt-1 h-5 w-5 shrink-0 text-accent" />
-                      <span className="text-base">{b}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
             </div>
           </motion.div>
