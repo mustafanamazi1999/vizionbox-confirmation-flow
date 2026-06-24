@@ -640,10 +640,11 @@ function Guarantee() {
 function Scarcity() {
   return (
     <section
-      className="border-t"
+      className="relative overflow-hidden border-t"
       style={{ borderColor: "rgba(255,255,255,0.05)", backgroundColor: "#021820" }}
     >
-      <div className="mx-auto max-w-[1280px] px-5 py-24 sm:px-8 sm:py-32">
+      <div className="grid-bg pointer-events-none absolute inset-0 opacity-60" />
+      <div className="relative mx-auto max-w-[1280px] px-5 py-24 sm:px-8 sm:py-32">
         <div className="mx-auto max-w-3xl text-center">
           <Reveal>
             <span
