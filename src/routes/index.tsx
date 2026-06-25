@@ -220,7 +220,7 @@ function Hero() {
               will be.
             </p>
           </HeroReveal>
-          <Reveal delay={0.1} className="mt-20 sm:mt-32">
+          <Reveal delay={0.1} className="mt-8 sm:mt-10">
             <div className="mx-auto max-w-2xl text-center">
               <p className="text-balance text-xl font-bold leading-snug text-white sm:text-2xl">
                 The call you just booked is the first step to scaling your
@@ -229,7 +229,7 @@ function Hero() {
             </div>
           </Reveal>
           <HeroReveal delay={0.4}>
-            <div className="mt-10 flex justify-center pb-4 sm:pb-8">
+            <div className="mt-6 flex justify-center pb-4 sm:pb-8">
               <CTAButton>Complete Pre-Call Form</CTAButton>
             </div>
           </HeroReveal>
