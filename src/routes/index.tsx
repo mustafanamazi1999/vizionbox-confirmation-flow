@@ -348,7 +348,7 @@ function FOMO() {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.99 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="group relative mx-auto max-w-3xl overflow-hidden rounded-2xl border-l-4 border-accent bg-[rgba(0,111,124,0.08)] p-6 shadow-[-6px_0_24px_-6px_rgba(0,181,199,0.5)] transition-shadow duration-500 hover:shadow-[0_0_60px_-12px_rgba(225,106,61,0.7),-6px_0_24px_-6px_rgba(0,181,199,0.5)] sm:p-8"
+            className="group relative mx-auto max-w-3xl overflow-hidden rounded-2xl border-l-4 border-accent bg-[rgba(0,111,124,0.08)] p-6 shadow-[-6px_0_24px_-6px_rgba(0,181,199,0.5)] transition-shadow duration-500 hover:shadow-[0_0_60px_-12px_rgba(225,106,61,0.7),-6px_0_24px_-6px_rgba(0,181,199,0.5)] active:shadow-[0_0_60px_-12px_rgba(225,106,61,0.7),-6px_0_24px_-6px_rgba(0,181,199,0.5)] sm:p-8"
             style={{ borderColor: "#00B5C7" }}
           >
             <div
