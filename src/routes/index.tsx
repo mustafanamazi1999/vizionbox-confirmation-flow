@@ -346,16 +346,17 @@ function FOMO() {
         <Reveal delay={0.3} className="mt-12">
           <motion.div
             whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.99 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="group relative mx-auto max-w-3xl overflow-hidden rounded-2xl border-l-4 border-accent bg-[rgba(0,111,124,0.08)] p-6 shadow-[-6px_0_24px_-6px_rgba(0,181,199,0.5)] transition-shadow duration-500 hover:shadow-[0_0_60px_-12px_rgba(225,106,61,0.7),-6px_0_24px_-6px_rgba(0,181,199,0.5)] sm:p-8"
+            className="group relative mx-auto max-w-3xl overflow-hidden rounded-2xl border-l-4 border-accent bg-[rgba(0,111,124,0.08)] p-6 shadow-[-6px_0_24px_-6px_rgba(0,181,199,0.5)] transition-shadow duration-500 hover:shadow-[0_0_60px_-12px_rgba(225,106,61,0.7),-6px_0_24px_-6px_rgba(0,181,199,0.5)] active:shadow-[0_0_60px_-12px_rgba(225,106,61,0.7),-6px_0_24px_-6px_rgba(0,181,199,0.5)] sm:p-8"
             style={{ borderColor: "#00B5C7" }}
           >
             <div
-              className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full opacity-30 blur-3xl transition-opacity duration-500 group-hover:opacity-70"
+              className="pointer-events-none absolute -right-10 -top-10 h-48 w-48 rounded-full opacity-40 blur-3xl transition-opacity duration-500 group-hover:opacity-70 group-active:opacity-70 sm:-right-20 sm:-top-20 sm:h-64 sm:w-64"
               style={{ background: "#E16A3D" }}
             />
             <div
-              className="orb pointer-events-none absolute -bottom-16 -left-16 h-48 w-48 rounded-full opacity-20 blur-3xl transition-opacity duration-500 group-hover:opacity-60"
+              className="orb pointer-events-none absolute -bottom-12 -left-12 h-36 w-36 rounded-full opacity-30 blur-3xl transition-opacity duration-500 group-hover:opacity-60 group-active:opacity-60 sm:-bottom-16 sm:-left-16 sm:h-48 sm:w-48"
               style={{ background: "#E16A3D" }}
             />
             <p className="relative z-10 text-xl font-bold leading-relaxed text-white sm:text-2xl">
