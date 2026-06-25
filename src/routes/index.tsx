@@ -220,7 +220,7 @@ function Hero() {
               will be.
             </p>
           </HeroReveal>
-          <Reveal delay={0.1} className="mt-40 sm:mt-56">
+          <Reveal delay={0.1} className="mt-20 sm:mt-32">
             <div className="mx-auto max-w-2xl text-center">
               <p className="text-balance text-xl font-bold leading-snug text-white sm:text-2xl">
                 The call you just booked is the first step to scaling your

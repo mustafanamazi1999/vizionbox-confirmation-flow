@@ -6,7 +6,7 @@ export function usePastHero() {
     const el = document.getElementById("hero-sentinel");
     if (!el) return;
     const obs = new IntersectionObserver(
-      ([e]) => setPast(!e.isIntersecting),
+      ([e]) => setPast(!e.isIntersecting && e.boundingClientRect.top < 0),
       { threshold: 0 }
     );
     obs.observe(el);
